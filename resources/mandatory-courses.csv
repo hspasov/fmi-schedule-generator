@@ -1,1 +1,741 @@
 studentsStreamId,groupNumber,sessionType,courseName,sessionLength,teacherId,areComputersRequired
+Statistics (year: 1),,LECTURE,Introduction to Programming,2,1,f
+Statistics (year: 1),1,TUTORIAL,Introduction to Programming,2,2,t
+Statistics (year: 1),,LECTURE,Object-oriented programming,3,3,f
+Statistics (year: 1),1,TUTORIAL,Object-oriented programming,3,4,f
+Statistics (year: 1),,LECTURE,Dynamic programming,4,5,f
+Statistics (year: 1),1,TUTORIAL,Dynamic programming,4,6,f
+Statistics (year: 1),,LECTURE,Algorithms,2,7,f
+Statistics (year: 1),1,TUTORIAL,Algorithms,2,8,f
+Statistics (year: 1),,LECTURE,Theory of programming languages,3,9,f
+Statistics (year: 1),1,TUTORIAL,Theory of programming languages,3,10,f
+Mathematics and Informatics (year: 2),,LECTURE,Compilers and language theory,4,11,f
+Mathematics and Informatics (year: 2),1,TUTORIAL,Compilers and language theory,4,12,t
+Mathematics and Informatics (year: 2),2,TUTORIAL,Compilers and language theory,4,13,t
+Mathematics and Informatics (year: 2),3,TUTORIAL,Compilers and language theory,4,14,t
+Mathematics and Informatics (year: 2),4,TUTORIAL,Compilers and language theory,4,15,t
+Mathematics and Informatics (year: 2),,LECTURE,Introduction to Programming in Java,2,16,f
+Mathematics and Informatics (year: 2),1,TUTORIAL,Introduction to Programming in Java,2,17,f
+Mathematics and Informatics (year: 2),2,TUTORIAL,Introduction to Programming in Java,2,18,f
+Mathematics and Informatics (year: 2),3,TUTORIAL,Introduction to Programming in Java,2,19,f
+Mathematics and Informatics (year: 2),4,TUTORIAL,Introduction to Programming in Java,2,20,f
+Mathematics and Informatics (year: 2),,LECTURE,WEB programming,3,21,f
+Mathematics and Informatics (year: 2),1,TUTORIAL,WEB programming,3,22,f
+Mathematics and Informatics (year: 2),2,TUTORIAL,WEB programming,3,23,f
+Mathematics and Informatics (year: 2),3,TUTORIAL,WEB programming,3,24,f
+Mathematics and Informatics (year: 2),4,TUTORIAL,WEB programming,3,25,f
+Mathematics and Informatics (year: 2),,LECTURE,Software project management,4,26,f
+Mathematics and Informatics (year: 2),1,TUTORIAL,Software project management,4,27,f
+Mathematics and Informatics (year: 2),2,TUTORIAL,Software project management,4,28,f
+Mathematics and Informatics (year: 2),3,TUTORIAL,Software project management,4,29,f
+Mathematics and Informatics (year: 2),4,TUTORIAL,Software project management,4,30,f
+Mathematics and Informatics (year: 2),,LECTURE,Databases,2,31,f
+Mathematics and Informatics (year: 2),1,TUTORIAL,Databases,2,32,f
+Mathematics and Informatics (year: 2),2,TUTORIAL,Databases,2,33,f
+Mathematics and Informatics (year: 2),3,TUTORIAL,Databases,2,34,f
+Mathematics and Informatics (year: 2),4,TUTORIAL,Databases,2,35,f
+Software Engineering (year: 3),,LECTURE,Modelling,3,36,f
+Software Engineering (year: 3),1,TUTORIAL,Modelling,3,37,t
+Software Engineering (year: 3),2,TUTORIAL,Modelling,3,38,t
+Software Engineering (year: 3),3,TUTORIAL,Modelling,3,39,t
+Software Engineering (year: 3),4,TUTORIAL,Modelling,3,40,t
+Software Engineering (year: 3),5,TUTORIAL,Modelling,3,41,t
+Software Engineering (year: 3),,LECTURE,User interfaces,4,42,f
+Software Engineering (year: 3),1,TUTORIAL,User interfaces,4,43,f
+Software Engineering (year: 3),2,TUTORIAL,User interfaces,4,44,f
+Software Engineering (year: 3),3,TUTORIAL,User interfaces,4,45,f
+Software Engineering (year: 3),4,TUTORIAL,User interfaces,4,46,f
+Software Engineering (year: 3),5,TUTORIAL,User interfaces,4,47,f
+Software Engineering (year: 3),,LECTURE,Software testing,2,48,f
+Software Engineering (year: 3),1,TUTORIAL,Software testing,2,49,f
+Software Engineering (year: 3),2,TUTORIAL,Software testing,2,50,f
+Software Engineering (year: 3),3,TUTORIAL,Software testing,2,51,f
+Software Engineering (year: 3),4,TUTORIAL,Software testing,2,52,f
+Software Engineering (year: 3),5,TUTORIAL,Software testing,2,53,f
+Software Engineering (year: 3),,LECTURE,Software quality assurance test,3,54,f
+Software Engineering (year: 3),1,TUTORIAL,Software quality assurance test,3,55,f
+Software Engineering (year: 3),2,TUTORIAL,Software quality assurance test,3,56,f
+Software Engineering (year: 3),3,TUTORIAL,Software quality assurance test,3,57,f
+Software Engineering (year: 3),4,TUTORIAL,Software quality assurance test,3,58,f
+Software Engineering (year: 3),5,TUTORIAL,Software quality assurance test,3,59,f
+Software Engineering (year: 3),,LECTURE,Service Oriented Architecture,4,60,f
+Software Engineering (year: 3),1,TUTORIAL,Service Oriented Architecture,4,61,f
+Software Engineering (year: 3),2,TUTORIAL,Service Oriented Architecture,4,62,f
+Software Engineering (year: 3),3,TUTORIAL,Service Oriented Architecture,4,63,f
+Software Engineering (year: 3),4,TUTORIAL,Service Oriented Architecture,4,64,f
+Software Engineering (year: 3),5,TUTORIAL,Service Oriented Architecture,4,65,f
+Statistics (year: 3),,LECTURE,Computer Graphics Programming,2,66,f
+Statistics (year: 3),1,TUTORIAL,Computer Graphics Programming,2,67,t
+Statistics (year: 3),,LECTURE,Information theory,3,68,f
+Statistics (year: 3),1,TUTORIAL,Information theory,3,69,f
+Statistics (year: 3),,LECTURE,Data compression,4,70,f
+Statistics (year: 3),1,TUTORIAL,Data compression,4,71,f
+Statistics (year: 3),,LECTURE,Data structures,2,72,f
+Statistics (year: 3),1,TUTORIAL,Data structures,2,73,f
+Statistics (year: 3),,LECTURE,Information security,3,74,f
+Statistics (year: 3),1,TUTORIAL,Information security,3,75,f
+Software Engineering (year: 1),,LECTURE,Cryptography,4,76,f
+Software Engineering (year: 1),1,TUTORIAL,Cryptography,4,77,t
+Software Engineering (year: 1),2,TUTORIAL,Cryptography,4,78,t
+Software Engineering (year: 1),3,TUTORIAL,Cryptography,4,79,t
+Software Engineering (year: 1),4,TUTORIAL,Cryptography,4,80,t
+Software Engineering (year: 1),5,TUTORIAL,Cryptography,4,81,t
+Software Engineering (year: 1),6,TUTORIAL,Cryptography,4,82,t
+Software Engineering (year: 1),,LECTURE,Information Management,2,83,f
+Software Engineering (year: 1),1,TUTORIAL,Information Management,2,84,f
+Software Engineering (year: 1),2,TUTORIAL,Information Management,2,85,f
+Software Engineering (year: 1),3,TUTORIAL,Information Management,2,86,f
+Software Engineering (year: 1),4,TUTORIAL,Information Management,2,87,f
+Software Engineering (year: 1),5,TUTORIAL,Information Management,2,88,f
+Software Engineering (year: 1),6,TUTORIAL,Information Management,2,89,f
+Software Engineering (year: 1),,LECTURE,Networking,3,90,f
+Software Engineering (year: 1),1,TUTORIAL,Networking,3,91,f
+Software Engineering (year: 1),2,TUTORIAL,Networking,3,92,f
+Software Engineering (year: 1),3,TUTORIAL,Networking,3,93,f
+Software Engineering (year: 1),4,TUTORIAL,Networking,3,94,f
+Software Engineering (year: 1),5,TUTORIAL,Networking,3,95,f
+Software Engineering (year: 1),6,TUTORIAL,Networking,3,96,f
+Software Engineering (year: 1),,LECTURE,Wireless systems,4,97,f
+Software Engineering (year: 1),1,TUTORIAL,Wireless systems,4,98,f
+Software Engineering (year: 1),2,TUTORIAL,Wireless systems,4,99,f
+Software Engineering (year: 1),3,TUTORIAL,Wireless systems,4,100,f
+Software Engineering (year: 1),4,TUTORIAL,Wireless systems,4,101,f
+Software Engineering (year: 1),5,TUTORIAL,Wireless systems,4,102,f
+Software Engineering (year: 1),6,TUTORIAL,Wireless systems,4,103,f
+Software Engineering (year: 1),,LECTURE,Client/Server and other types of communication,2,104,f
+Software Engineering (year: 1),1,TUTORIAL,Client/Server and other types of communication,2,105,f
+Software Engineering (year: 1),2,TUTORIAL,Client/Server and other types of communication,2,106,f
+Software Engineering (year: 1),3,TUTORIAL,Client/Server and other types of communication,2,107,f
+Software Engineering (year: 1),4,TUTORIAL,Client/Server and other types of communication,2,108,f
+Software Engineering (year: 1),5,TUTORIAL,Client/Server and other types of communication,2,109,f
+Software Engineering (year: 1),6,TUTORIAL,Client/Server and other types of communication,2,110,f
+Informatics (year: 1),,LECTURE,Server administration,3,111,f
+Informatics (year: 1),1,TUTORIAL,Server administration,3,112,t
+Informatics (year: 1),2,TUTORIAL,Server administration,3,113,t
+Informatics (year: 1),3,TUTORIAL,Server administration,3,114,t
+Informatics (year: 1),4,TUTORIAL,Server administration,3,115,t
+Informatics (year: 1),5,TUTORIAL,Server administration,3,116,t
+Informatics (year: 1),6,TUTORIAL,Server administration,3,117,t
+Informatics (year: 1),,LECTURE,Data Management,4,118,f
+Informatics (year: 1),1,TUTORIAL,Data Management,4,119,f
+Informatics (year: 1),2,TUTORIAL,Data Management,4,120,f
+Informatics (year: 1),3,TUTORIAL,Data Management,4,121,f
+Informatics (year: 1),4,TUTORIAL,Data Management,4,122,f
+Informatics (year: 1),5,TUTORIAL,Data Management,4,123,f
+Informatics (year: 1),6,TUTORIAL,Data Management,4,124,f
+Informatics (year: 1),,LECTURE,Operating Systems,2,125,f
+Informatics (year: 1),1,TUTORIAL,Operating Systems,2,126,f
+Informatics (year: 1),2,TUTORIAL,Operating Systems,2,127,f
+Informatics (year: 1),3,TUTORIAL,Operating Systems,2,128,f
+Informatics (year: 1),4,TUTORIAL,Operating Systems,2,129,f
+Informatics (year: 1),5,TUTORIAL,Operating Systems,2,130,f
+Informatics (year: 1),6,TUTORIAL,Operating Systems,2,131,f
+Informatics (year: 1),,LECTURE,Artificial intelligence,3,132,f
+Informatics (year: 1),1,TUTORIAL,Artificial intelligence,3,133,f
+Informatics (year: 1),2,TUTORIAL,Artificial intelligence,3,134,f
+Informatics (year: 1),3,TUTORIAL,Artificial intelligence,3,135,f
+Informatics (year: 1),4,TUTORIAL,Artificial intelligence,3,136,f
+Informatics (year: 1),5,TUTORIAL,Artificial intelligence,3,137,f
+Informatics (year: 1),6,TUTORIAL,Artificial intelligence,3,138,f
+Informatics (year: 1),,LECTURE,Natural Language Processing,4,139,f
+Informatics (year: 1),1,TUTORIAL,Natural Language Processing,4,140,f
+Informatics (year: 1),2,TUTORIAL,Natural Language Processing,4,141,f
+Informatics (year: 1),3,TUTORIAL,Natural Language Processing,4,142,f
+Informatics (year: 1),4,TUTORIAL,Natural Language Processing,4,143,f
+Informatics (year: 1),5,TUTORIAL,Natural Language Processing,4,144,f
+Informatics (year: 1),6,TUTORIAL,Natural Language Processing,4,145,f
+Mathematics and Informatics (year: 4),,LECTURE,Machine learning,2,146,f
+Mathematics and Informatics (year: 4),1,TUTORIAL,Machine learning,2,147,t
+Mathematics and Informatics (year: 4),2,TUTORIAL,Machine learning,2,148,t
+Mathematics and Informatics (year: 4),3,TUTORIAL,Machine learning,2,149,t
+Mathematics and Informatics (year: 4),4,TUTORIAL,Machine learning,2,150,t
+Mathematics and Informatics (year: 4),,LECTURE,Introduction to algorithms,3,151,f
+Mathematics and Informatics (year: 4),1,TUTORIAL,Introduction to algorithms,3,152,f
+Mathematics and Informatics (year: 4),2,TUTORIAL,Introduction to algorithms,3,153,f
+Mathematics and Informatics (year: 4),3,TUTORIAL,Introduction to algorithms,3,154,f
+Mathematics and Informatics (year: 4),4,TUTORIAL,Introduction to algorithms,3,155,f
+Mathematics and Informatics (year: 4),,LECTURE,Numerical Algorithms,4,156,f
+Mathematics and Informatics (year: 4),1,TUTORIAL,Numerical Algorithms,4,157,f
+Mathematics and Informatics (year: 4),2,TUTORIAL,Numerical Algorithms,4,158,f
+Mathematics and Informatics (year: 4),3,TUTORIAL,Numerical Algorithms,4,159,f
+Mathematics and Informatics (year: 4),4,TUTORIAL,Numerical Algorithms,4,160,f
+Mathematics and Informatics (year: 4),,LECTURE,Number Theory,2,161,f
+Mathematics and Informatics (year: 4),1,TUTORIAL,Number Theory,2,162,f
+Mathematics and Informatics (year: 4),2,TUTORIAL,Number Theory,2,163,f
+Mathematics and Informatics (year: 4),3,TUTORIAL,Number Theory,2,164,f
+Mathematics and Informatics (year: 4),4,TUTORIAL,Number Theory,2,165,f
+Mathematics and Informatics (year: 4),,LECTURE,Introductory Discrete Mathematics for Computer Science,3,166,f
+Mathematics and Informatics (year: 4),1,TUTORIAL,Introductory Discrete Mathematics for Computer Science,3,167,f
+Mathematics and Informatics (year: 4),2,TUTORIAL,Introductory Discrete Mathematics for Computer Science,3,168,f
+Mathematics and Informatics (year: 4),3,TUTORIAL,Introductory Discrete Mathematics for Computer Science,3,169,f
+Mathematics and Informatics (year: 4),4,TUTORIAL,Introductory Discrete Mathematics for Computer Science,3,170,f
+Information Systems (year: 3),,LECTURE,Computer Engineering,4,171,f
+Information Systems (year: 3),1,TUTORIAL,Computer Engineering,4,172,t
+Information Systems (year: 3),2,TUTORIAL,Computer Engineering,4,173,t
+Information Systems (year: 3),3,TUTORIAL,Computer Engineering,4,174,t
+Information Systems (year: 3),,LECTURE,Computer architecture,2,175,f
+Information Systems (year: 3),1,TUTORIAL,Computer architecture,2,176,f
+Information Systems (year: 3),2,TUTORIAL,Computer architecture,2,177,f
+Information Systems (year: 3),3,TUTORIAL,Computer architecture,2,178,f
+Information Systems (year: 3),,LECTURE,Introduction to Computer Architecture,3,179,f
+Information Systems (year: 3),1,TUTORIAL,Introduction to Computer Architecture,3,180,f
+Information Systems (year: 3),2,TUTORIAL,Introduction to Computer Architecture,3,181,f
+Information Systems (year: 3),3,TUTORIAL,Introduction to Computer Architecture,3,182,f
+Information Systems (year: 3),,LECTURE,Service Oriented Architecture,4,183,f
+Information Systems (year: 3),1,TUTORIAL,Service Oriented Architecture,4,184,f
+Information Systems (year: 3),2,TUTORIAL,Service Oriented Architecture,4,185,f
+Information Systems (year: 3),3,TUTORIAL,Service Oriented Architecture,4,186,f
+Information Systems (year: 3),,LECTURE,Electronic Design,2,187,f
+Information Systems (year: 3),1,TUTORIAL,Electronic Design,2,188,f
+Information Systems (year: 3),2,TUTORIAL,Electronic Design,2,189,f
+Information Systems (year: 3),3,TUTORIAL,Electronic Design,2,190,f
+Information Systems (year: 1),,LECTURE,Logic Design,3,191,f
+Information Systems (year: 1),1,TUTORIAL,Logic Design,3,192,t
+Information Systems (year: 1),2,TUTORIAL,Logic Design,3,193,t
+Information Systems (year: 1),3,TUTORIAL,Logic Design,3,194,t
+Information Systems (year: 1),4,TUTORIAL,Logic Design,3,195,t
+Information Systems (year: 1),,LECTURE,Processor Architecture,4,196,f
+Information Systems (year: 1),1,TUTORIAL,Processor Architecture,4,197,f
+Information Systems (year: 1),2,TUTORIAL,Processor Architecture,4,198,f
+Information Systems (year: 1),3,TUTORIAL,Processor Architecture,4,199,f
+Information Systems (year: 1),4,TUTORIAL,Processor Architecture,4,200,f
+Information Systems (year: 1),,LECTURE,Data Logic,2,1,f
+Information Systems (year: 1),1,TUTORIAL,Data Logic,2,2,f
+Information Systems (year: 1),2,TUTORIAL,Data Logic,2,3,f
+Information Systems (year: 1),3,TUTORIAL,Data Logic,2,4,f
+Information Systems (year: 1),4,TUTORIAL,Data Logic,2,5,f
+Information Systems (year: 1),,LECTURE,Computer Logic,3,6,f
+Information Systems (year: 1),1,TUTORIAL,Computer Logic,3,7,f
+Information Systems (year: 1),2,TUTORIAL,Computer Logic,3,8,f
+Information Systems (year: 1),3,TUTORIAL,Computer Logic,3,9,f
+Information Systems (year: 1),4,TUTORIAL,Computer Logic,3,10,f
+Information Systems (year: 1),,LECTURE,Statistics,4,11,f
+Information Systems (year: 1),1,TUTORIAL,Statistics,4,12,f
+Information Systems (year: 1),2,TUTORIAL,Statistics,4,13,f
+Information Systems (year: 1),3,TUTORIAL,Statistics,4,14,f
+Information Systems (year: 1),4,TUTORIAL,Statistics,4,15,f
+Computer Science (year: 2),,LECTURE,Graph theory,2,16,f
+Computer Science (year: 2),1,TUTORIAL,Graph theory,2,17,t
+Computer Science (year: 2),2,TUTORIAL,Graph theory,2,18,t
+Computer Science (year: 2),3,TUTORIAL,Graph theory,2,19,t
+Computer Science (year: 2),4,TUTORIAL,Graph theory,2,20,t
+Computer Science (year: 2),5,TUTORIAL,Graph theory,2,21,t
+Computer Science (year: 2),6,TUTORIAL,Graph theory,2,22,t
+Computer Science (year: 2),7,TUTORIAL,Graph theory,2,23,t
+Computer Science (year: 2),8,TUTORIAL,Graph theory,2,24,t
+Computer Science (year: 2),,LECTURE,Automata theory,3,25,f
+Computer Science (year: 2),1,TUTORIAL,Automata theory,3,26,f
+Computer Science (year: 2),2,TUTORIAL,Automata theory,3,27,f
+Computer Science (year: 2),3,TUTORIAL,Automata theory,3,28,f
+Computer Science (year: 2),4,TUTORIAL,Automata theory,3,29,f
+Computer Science (year: 2),5,TUTORIAL,Automata theory,3,30,f
+Computer Science (year: 2),6,TUTORIAL,Automata theory,3,31,f
+Computer Science (year: 2),7,TUTORIAL,Automata theory,3,32,f
+Computer Science (year: 2),8,TUTORIAL,Automata theory,3,33,f
+Computer Science (year: 2),,LECTURE,Complexity theory,4,34,f
+Computer Science (year: 2),1,TUTORIAL,Complexity theory,4,35,f
+Computer Science (year: 2),2,TUTORIAL,Complexity theory,4,36,f
+Computer Science (year: 2),3,TUTORIAL,Complexity theory,4,37,f
+Computer Science (year: 2),4,TUTORIAL,Complexity theory,4,38,f
+Computer Science (year: 2),5,TUTORIAL,Complexity theory,4,39,f
+Computer Science (year: 2),6,TUTORIAL,Complexity theory,4,40,f
+Computer Science (year: 2),7,TUTORIAL,Complexity theory,4,41,f
+Computer Science (year: 2),8,TUTORIAL,Complexity theory,4,42,f
+Computer Science (year: 2),,LECTURE,Multimedia,2,43,f
+Computer Science (year: 2),1,TUTORIAL,Multimedia,2,44,f
+Computer Science (year: 2),2,TUTORIAL,Multimedia,2,45,f
+Computer Science (year: 2),3,TUTORIAL,Multimedia,2,46,f
+Computer Science (year: 2),4,TUTORIAL,Multimedia,2,47,f
+Computer Science (year: 2),5,TUTORIAL,Multimedia,2,48,f
+Computer Science (year: 2),6,TUTORIAL,Multimedia,2,49,f
+Computer Science (year: 2),7,TUTORIAL,Multimedia,2,50,f
+Computer Science (year: 2),8,TUTORIAL,Multimedia,2,51,f
+Computer Science (year: 2),,LECTURE,Graphic design with computers,3,52,f
+Computer Science (year: 2),1,TUTORIAL,Graphic design with computers,3,53,f
+Computer Science (year: 2),2,TUTORIAL,Graphic design with computers,3,54,f
+Computer Science (year: 2),3,TUTORIAL,Graphic design with computers,3,55,f
+Computer Science (year: 2),4,TUTORIAL,Graphic design with computers,3,56,f
+Computer Science (year: 2),5,TUTORIAL,Graphic design with computers,3,57,f
+Computer Science (year: 2),6,TUTORIAL,Graphic design with computers,3,58,f
+Computer Science (year: 2),7,TUTORIAL,Graphic design with computers,3,59,f
+Computer Science (year: 2),8,TUTORIAL,Graphic design with computers,3,60,f
+Mathematics (year: 4),,LECTURE,Computer-aided Geometric Design,4,61,f
+Mathematics (year: 4),1,TUTORIAL,Computer-aided Geometric Design,4,62,t
+Mathematics (year: 4),,LECTURE,Scientific computing,2,63,f
+Mathematics (year: 4),1,TUTORIAL,Scientific computing,2,64,f
+Mathematics (year: 4),,LECTURE,Bioinformatics,3,65,f
+Mathematics (year: 4),1,TUTORIAL,Bioinformatics,3,66,f
+Mathematics (year: 4),,LECTURE,Geoinformatics,4,67,f
+Mathematics (year: 4),1,TUTORIAL,Geoinformatics,4,68,f
+Mathematics (year: 4),,LECTURE,Web Services,2,69,f
+Mathematics (year: 4),1,TUTORIAL,Web Services,2,70,f
+Informatics (year: 2),,LECTURE,Web design,3,71,f
+Informatics (year: 2),1,TUTORIAL,Web design,3,72,t
+Informatics (year: 2),2,TUTORIAL,Web design,3,73,t
+Informatics (year: 2),3,TUTORIAL,Web design,3,74,t
+Informatics (year: 2),4,TUTORIAL,Web design,3,75,t
+Informatics (year: 2),,LECTURE,Web Applets,4,76,f
+Informatics (year: 2),1,TUTORIAL,Web Applets,4,77,f
+Informatics (year: 2),2,TUTORIAL,Web Applets,4,78,f
+Informatics (year: 2),3,TUTORIAL,Web Applets,4,79,f
+Informatics (year: 2),4,TUTORIAL,Web Applets,4,80,f
+Informatics (year: 2),,LECTURE,Design Physics,2,81,f
+Informatics (year: 2),1,TUTORIAL,Design Physics,2,82,f
+Informatics (year: 2),2,TUTORIAL,Design Physics,2,83,f
+Informatics (year: 2),3,TUTORIAL,Design Physics,2,84,f
+Informatics (year: 2),4,TUTORIAL,Design Physics,2,85,f
+Informatics (year: 2),,LECTURE,Business process management,3,86,f
+Informatics (year: 2),1,TUTORIAL,Business process management,3,87,f
+Informatics (year: 2),2,TUTORIAL,Business process management,3,88,f
+Informatics (year: 2),3,TUTORIAL,Business process management,3,89,f
+Informatics (year: 2),4,TUTORIAL,Business process management,3,90,f
+Informatics (year: 2),,LECTURE,Computational geometry,4,91,f
+Informatics (year: 2),1,TUTORIAL,Computational geometry,4,92,f
+Informatics (year: 2),2,TUTORIAL,Computational geometry,4,93,f
+Informatics (year: 2),3,TUTORIAL,Computational geometry,4,94,f
+Informatics (year: 2),4,TUTORIAL,Computational geometry,4,95,f
+Applied Mathematics (year: 3),,LECTURE,Computational linguistics,2,96,f
+Applied Mathematics (year: 3),1,TUTORIAL,Computational linguistics,2,97,t
+Applied Mathematics (year: 3),2,TUTORIAL,Computational linguistics,2,98,t
+Applied Mathematics (year: 3),,LECTURE,Digital Libraries,3,99,f
+Applied Mathematics (year: 3),1,TUTORIAL,Digital Libraries,3,100,f
+Applied Mathematics (year: 3),2,TUTORIAL,Digital Libraries,3,101,f
+Applied Mathematics (year: 3),,LECTURE,Nonkilling Technology,4,102,f
+Applied Mathematics (year: 3),1,TUTORIAL,Nonkilling Technology,4,103,f
+Applied Mathematics (year: 3),2,TUTORIAL,Nonkilling Technology,4,104,f
+Applied Mathematics (year: 3),,LECTURE,Quantum computing,2,105,f
+Applied Mathematics (year: 3),1,TUTORIAL,Quantum computing,2,106,f
+Applied Mathematics (year: 3),2,TUTORIAL,Quantum computing,2,107,f
+Applied Mathematics (year: 3),,LECTURE,Software freedom,3,108,f
+Applied Mathematics (year: 3),1,TUTORIAL,Software freedom,3,109,f
+Applied Mathematics (year: 3),2,TUTORIAL,Software freedom,3,110,f
+Informatics (year: 4),,LECTURE,Device Utilization,4,111,f
+Informatics (year: 4),1,TUTORIAL,Device Utilization,4,112,t
+Informatics (year: 4),2,TUTORIAL,Device Utilization,4,113,t
+Informatics (year: 4),3,TUTORIAL,Device Utilization,4,114,t
+Informatics (year: 4),,LECTURE,Parallel computing,2,115,f
+Informatics (year: 4),1,TUTORIAL,Parallel computing,2,116,f
+Informatics (year: 4),2,TUTORIAL,Parallel computing,2,117,f
+Informatics (year: 4),3,TUTORIAL,Parallel computing,2,118,f
+Informatics (year: 4),,LECTURE,Concurrency and real-time programming,3,119,f
+Informatics (year: 4),1,TUTORIAL,Concurrency and real-time programming,3,120,f
+Informatics (year: 4),2,TUTORIAL,Concurrency and real-time programming,3,121,f
+Informatics (year: 4),3,TUTORIAL,Concurrency and real-time programming,3,122,f
+Informatics (year: 4),,LECTURE,Algebra,4,123,f
+Informatics (year: 4),1,TUTORIAL,Algebra,4,124,f
+Informatics (year: 4),2,TUTORIAL,Algebra,4,125,f
+Informatics (year: 4),3,TUTORIAL,Algebra,4,126,f
+Informatics (year: 4),,LECTURE,Fundamental Mathematics,2,127,f
+Informatics (year: 4),1,TUTORIAL,Fundamental Mathematics,2,128,f
+Informatics (year: 4),2,TUTORIAL,Fundamental Mathematics,2,129,f
+Informatics (year: 4),3,TUTORIAL,Fundamental Mathematics,2,130,f
+Applied Mathematics (year: 1),,LECTURE,Analysis,3,131,f
+Applied Mathematics (year: 1),1,TUTORIAL,Analysis,3,132,t
+Applied Mathematics (year: 1),2,TUTORIAL,Analysis,3,133,t
+Applied Mathematics (year: 1),,LECTURE,Category theory,4,134,f
+Applied Mathematics (year: 1),1,TUTORIAL,Category theory,4,135,f
+Applied Mathematics (year: 1),2,TUTORIAL,Category theory,4,136,f
+Applied Mathematics (year: 1),,LECTURE,Number Theory,2,137,f
+Applied Mathematics (year: 1),1,TUTORIAL,Number Theory,2,138,f
+Applied Mathematics (year: 1),2,TUTORIAL,Number Theory,2,139,f
+Applied Mathematics (year: 1),,LECTURE,Philosophy of Mathematics,3,140,f
+Applied Mathematics (year: 1),1,TUTORIAL,Philosophy of Mathematics,3,141,f
+Applied Mathematics (year: 1),2,TUTORIAL,Philosophy of Mathematics,3,142,f
+Applied Mathematics (year: 1),,LECTURE,Topology,4,143,f
+Applied Mathematics (year: 1),1,TUTORIAL,Topology,4,144,f
+Applied Mathematics (year: 1),2,TUTORIAL,Topology,4,145,f
+Mathematics (year: 2),,LECTURE,Actuarial Mathematics,2,146,f
+Mathematics (year: 2),1,TUTORIAL,Actuarial Mathematics,2,147,t
+Mathematics (year: 2),,LECTURE,Finance,3,148,f
+Mathematics (year: 2),1,TUTORIAL,Finance,3,149,f
+Mathematics (year: 2),,LECTURE,Applied Calculus,4,150,f
+Mathematics (year: 2),1,TUTORIAL,Applied Calculus,4,151,f
+Mathematics (year: 2),,LECTURE,Applied Analysis,2,152,f
+Mathematics (year: 2),1,TUTORIAL,Applied Analysis,2,153,f
+Mathematics (year: 2),,LECTURE,Applied Differential Equations,3,154,f
+Mathematics (year: 2),1,TUTORIAL,Applied Differential Equations,3,155,f
+Mathematics and Informatics (year: 1),,LECTURE,Applied Category Theory,4,156,f
+Mathematics and Informatics (year: 1),1,TUTORIAL,Applied Category Theory,4,157,t
+Mathematics and Informatics (year: 1),2,TUTORIAL,Applied Category Theory,4,158,t
+Mathematics and Informatics (year: 1),3,TUTORIAL,Applied Category Theory,4,159,t
+Mathematics and Informatics (year: 1),4,TUTORIAL,Applied Category Theory,4,160,t
+Mathematics and Informatics (year: 1),,LECTURE,Board Game Studies,2,161,f
+Mathematics and Informatics (year: 1),1,TUTORIAL,Board Game Studies,2,162,f
+Mathematics and Informatics (year: 1),2,TUTORIAL,Board Game Studies,2,163,f
+Mathematics and Informatics (year: 1),3,TUTORIAL,Board Game Studies,2,164,f
+Mathematics and Informatics (year: 1),4,TUTORIAL,Board Game Studies,2,165,f
+Mathematics and Informatics (year: 1),,LECTURE,Combinatorics,3,166,f
+Mathematics and Informatics (year: 1),1,TUTORIAL,Combinatorics,3,167,f
+Mathematics and Informatics (year: 1),2,TUTORIAL,Combinatorics,3,168,f
+Mathematics and Informatics (year: 1),3,TUTORIAL,Combinatorics,3,169,f
+Mathematics and Informatics (year: 1),4,TUTORIAL,Combinatorics,3,170,f
+Mathematics and Informatics (year: 1),,LECTURE,Discrete Mathematics,4,171,f
+Mathematics and Informatics (year: 1),1,TUTORIAL,Discrete Mathematics,4,172,f
+Mathematics and Informatics (year: 1),2,TUTORIAL,Discrete Mathematics,4,173,f
+Mathematics and Informatics (year: 1),3,TUTORIAL,Discrete Mathematics,4,174,f
+Mathematics and Informatics (year: 1),4,TUTORIAL,Discrete Mathematics,4,175,f
+Mathematics and Informatics (year: 1),,LECTURE,Engineering Mathematics,2,176,f
+Mathematics and Informatics (year: 1),1,TUTORIAL,Engineering Mathematics,2,177,f
+Mathematics and Informatics (year: 1),2,TUTORIAL,Engineering Mathematics,2,178,f
+Mathematics and Informatics (year: 1),3,TUTORIAL,Engineering Mathematics,2,179,f
+Mathematics and Informatics (year: 1),4,TUTORIAL,Engineering Mathematics,2,180,f
+Software Engineering (year: 4),,LECTURE,Knot Theory,3,181,f
+Software Engineering (year: 4),1,TUTORIAL,Knot Theory,3,182,t
+Software Engineering (year: 4),2,TUTORIAL,Knot Theory,3,183,t
+Software Engineering (year: 4),3,TUTORIAL,Knot Theory,3,184,t
+Software Engineering (year: 4),4,TUTORIAL,Knot Theory,3,185,t
+Software Engineering (year: 4),5,TUTORIAL,Knot Theory,3,186,t
+Software Engineering (year: 4),,LECTURE,Numerical Analysis,4,187,f
+Software Engineering (year: 4),1,TUTORIAL,Numerical Analysis,4,188,f
+Software Engineering (year: 4),2,TUTORIAL,Numerical Analysis,4,189,f
+Software Engineering (year: 4),3,TUTORIAL,Numerical Analysis,4,190,f
+Software Engineering (year: 4),4,TUTORIAL,Numerical Analysis,4,191,f
+Software Engineering (year: 4),5,TUTORIAL,Numerical Analysis,4,192,f
+Software Engineering (year: 4),,LECTURE,Mathematical Physics,2,193,f
+Software Engineering (year: 4),1,TUTORIAL,Mathematical Physics,2,194,f
+Software Engineering (year: 4),2,TUTORIAL,Mathematical Physics,2,195,f
+Software Engineering (year: 4),3,TUTORIAL,Mathematical Physics,2,196,f
+Software Engineering (year: 4),4,TUTORIAL,Mathematical Physics,2,197,f
+Software Engineering (year: 4),5,TUTORIAL,Mathematical Physics,2,198,f
+Software Engineering (year: 4),,LECTURE,Quantum Algebraic Topology,3,199,f
+Software Engineering (year: 4),1,TUTORIAL,Quantum Algebraic Topology,3,200,f
+Software Engineering (year: 4),2,TUTORIAL,Quantum Algebraic Topology,3,1,f
+Software Engineering (year: 4),3,TUTORIAL,Quantum Algebraic Topology,3,2,f
+Software Engineering (year: 4),4,TUTORIAL,Quantum Algebraic Topology,3,3,f
+Software Engineering (year: 4),5,TUTORIAL,Quantum Algebraic Topology,3,4,f
+Software Engineering (year: 4),,LECTURE,Introduction to Programming,4,5,f
+Software Engineering (year: 4),1,TUTORIAL,Introduction to Programming,4,6,f
+Software Engineering (year: 4),2,TUTORIAL,Introduction to Programming,4,7,f
+Software Engineering (year: 4),3,TUTORIAL,Introduction to Programming,4,8,f
+Software Engineering (year: 4),4,TUTORIAL,Introduction to Programming,4,9,f
+Software Engineering (year: 4),5,TUTORIAL,Introduction to Programming,4,10,f
+Statistics (year: 2),,LECTURE,Object-oriented programming,2,11,f
+Statistics (year: 2),1,TUTORIAL,Object-oriented programming,2,12,t
+Statistics (year: 2),,LECTURE,Dynamic programming,3,13,f
+Statistics (year: 2),1,TUTORIAL,Dynamic programming,3,14,f
+Statistics (year: 2),,LECTURE,Algorithms,4,15,f
+Statistics (year: 2),1,TUTORIAL,Algorithms,4,16,f
+Statistics (year: 2),,LECTURE,Theory of programming languages,2,17,f
+Statistics (year: 2),1,TUTORIAL,Theory of programming languages,2,18,f
+Statistics (year: 2),,LECTURE,Compilers and language theory,3,19,f
+Statistics (year: 2),1,TUTORIAL,Compilers and language theory,3,20,f
+Software Engineering (year: 2),,LECTURE,Introduction to Programming in Java,4,21,f
+Software Engineering (year: 2),1,TUTORIAL,Introduction to Programming in Java,4,22,t
+Software Engineering (year: 2),2,TUTORIAL,Introduction to Programming in Java,4,23,t
+Software Engineering (year: 2),3,TUTORIAL,Introduction to Programming in Java,4,24,t
+Software Engineering (year: 2),4,TUTORIAL,Introduction to Programming in Java,4,25,t
+Software Engineering (year: 2),5,TUTORIAL,Introduction to Programming in Java,4,26,t
+Software Engineering (year: 2),6,TUTORIAL,Introduction to Programming in Java,4,27,t
+Software Engineering (year: 2),,LECTURE,WEB programming,2,28,f
+Software Engineering (year: 2),1,TUTORIAL,WEB programming,2,29,f
+Software Engineering (year: 2),2,TUTORIAL,WEB programming,2,30,f
+Software Engineering (year: 2),3,TUTORIAL,WEB programming,2,31,f
+Software Engineering (year: 2),4,TUTORIAL,WEB programming,2,32,f
+Software Engineering (year: 2),5,TUTORIAL,WEB programming,2,33,f
+Software Engineering (year: 2),6,TUTORIAL,WEB programming,2,34,f
+Software Engineering (year: 2),,LECTURE,Software project management,3,35,f
+Software Engineering (year: 2),1,TUTORIAL,Software project management,3,36,f
+Software Engineering (year: 2),2,TUTORIAL,Software project management,3,37,f
+Software Engineering (year: 2),3,TUTORIAL,Software project management,3,38,f
+Software Engineering (year: 2),4,TUTORIAL,Software project management,3,39,f
+Software Engineering (year: 2),5,TUTORIAL,Software project management,3,40,f
+Software Engineering (year: 2),6,TUTORIAL,Software project management,3,41,f
+Software Engineering (year: 2),,LECTURE,Databases,4,42,f
+Software Engineering (year: 2),1,TUTORIAL,Databases,4,43,f
+Software Engineering (year: 2),2,TUTORIAL,Databases,4,44,f
+Software Engineering (year: 2),3,TUTORIAL,Databases,4,45,f
+Software Engineering (year: 2),4,TUTORIAL,Databases,4,46,f
+Software Engineering (year: 2),5,TUTORIAL,Databases,4,47,f
+Software Engineering (year: 2),6,TUTORIAL,Databases,4,48,f
+Software Engineering (year: 2),,LECTURE,Modelling,2,49,f
+Software Engineering (year: 2),1,TUTORIAL,Modelling,2,50,f
+Software Engineering (year: 2),2,TUTORIAL,Modelling,2,51,f
+Software Engineering (year: 2),3,TUTORIAL,Modelling,2,52,f
+Software Engineering (year: 2),4,TUTORIAL,Modelling,2,53,f
+Software Engineering (year: 2),5,TUTORIAL,Modelling,2,54,f
+Software Engineering (year: 2),6,TUTORIAL,Modelling,2,55,f
+Statistics (year: 4),,LECTURE,User interfaces,3,56,f
+Statistics (year: 4),1,TUTORIAL,User interfaces,3,57,t
+Statistics (year: 4),,LECTURE,Software testing,4,58,f
+Statistics (year: 4),1,TUTORIAL,Software testing,4,59,f
+Statistics (year: 4),,LECTURE,Software quality assurance test,2,60,f
+Statistics (year: 4),1,TUTORIAL,Software quality assurance test,2,61,f
+Statistics (year: 4),,LECTURE,Service Oriented Architecture,3,62,f
+Statistics (year: 4),1,TUTORIAL,Service Oriented Architecture,3,63,f
+Statistics (year: 4),,LECTURE,Computer Graphics Programming,4,64,f
+Statistics (year: 4),1,TUTORIAL,Computer Graphics Programming,4,65,f
+Mathematics and Informatics (year: 3),,LECTURE,Information theory,2,66,f
+Mathematics and Informatics (year: 3),1,TUTORIAL,Information theory,2,67,t
+Mathematics and Informatics (year: 3),2,TUTORIAL,Information theory,2,68,t
+Mathematics and Informatics (year: 3),3,TUTORIAL,Information theory,2,69,t
+Mathematics and Informatics (year: 3),4,TUTORIAL,Information theory,2,70,t
+Mathematics and Informatics (year: 3),,LECTURE,Data compression,3,71,f
+Mathematics and Informatics (year: 3),1,TUTORIAL,Data compression,3,72,f
+Mathematics and Informatics (year: 3),2,TUTORIAL,Data compression,3,73,f
+Mathematics and Informatics (year: 3),3,TUTORIAL,Data compression,3,74,f
+Mathematics and Informatics (year: 3),4,TUTORIAL,Data compression,3,75,f
+Mathematics and Informatics (year: 3),,LECTURE,Data structures,4,76,f
+Mathematics and Informatics (year: 3),1,TUTORIAL,Data structures,4,77,f
+Mathematics and Informatics (year: 3),2,TUTORIAL,Data structures,4,78,f
+Mathematics and Informatics (year: 3),3,TUTORIAL,Data structures,4,79,f
+Mathematics and Informatics (year: 3),4,TUTORIAL,Data structures,4,80,f
+Mathematics and Informatics (year: 3),,LECTURE,Information security,2,81,f
+Mathematics and Informatics (year: 3),1,TUTORIAL,Information security,2,82,f
+Mathematics and Informatics (year: 3),2,TUTORIAL,Information security,2,83,f
+Mathematics and Informatics (year: 3),3,TUTORIAL,Information security,2,84,f
+Mathematics and Informatics (year: 3),4,TUTORIAL,Information security,2,85,f
+Mathematics and Informatics (year: 3),,LECTURE,Cryptography,3,86,f
+Mathematics and Informatics (year: 3),1,TUTORIAL,Cryptography,3,87,f
+Mathematics and Informatics (year: 3),2,TUTORIAL,Cryptography,3,88,f
+Mathematics and Informatics (year: 3),3,TUTORIAL,Cryptography,3,89,f
+Mathematics and Informatics (year: 3),4,TUTORIAL,Cryptography,3,90,f
+Information Systems (year: 4),,LECTURE,Information Management,4,91,f
+Information Systems (year: 4),1,TUTORIAL,Information Management,4,92,t
+Information Systems (year: 4),2,TUTORIAL,Information Management,4,93,t
+Information Systems (year: 4),3,TUTORIAL,Information Management,4,94,t
+Information Systems (year: 4),,LECTURE,Networking,2,95,f
+Information Systems (year: 4),1,TUTORIAL,Networking,2,96,f
+Information Systems (year: 4),2,TUTORIAL,Networking,2,97,f
+Information Systems (year: 4),3,TUTORIAL,Networking,2,98,f
+Information Systems (year: 4),,LECTURE,Wireless systems,3,99,f
+Information Systems (year: 4),1,TUTORIAL,Wireless systems,3,100,f
+Information Systems (year: 4),2,TUTORIAL,Wireless systems,3,101,f
+Information Systems (year: 4),3,TUTORIAL,Wireless systems,3,102,f
+Information Systems (year: 4),,LECTURE,Client/Server and other types of communication,4,103,f
+Information Systems (year: 4),1,TUTORIAL,Client/Server and other types of communication,4,104,f
+Information Systems (year: 4),2,TUTORIAL,Client/Server and other types of communication,4,105,f
+Information Systems (year: 4),3,TUTORIAL,Client/Server and other types of communication,4,106,f
+Information Systems (year: 4),,LECTURE,Server administration,2,107,f
+Information Systems (year: 4),1,TUTORIAL,Server administration,2,108,f
+Information Systems (year: 4),2,TUTORIAL,Server administration,2,109,f
+Information Systems (year: 4),3,TUTORIAL,Server administration,2,110,f
+Computer Science (year: 4),,LECTURE,Data Management,3,111,f
+Computer Science (year: 4),1,TUTORIAL,Data Management,3,112,t
+Computer Science (year: 4),2,TUTORIAL,Data Management,3,113,t
+Computer Science (year: 4),3,TUTORIAL,Data Management,3,114,t
+Computer Science (year: 4),4,TUTORIAL,Data Management,3,115,t
+Computer Science (year: 4),5,TUTORIAL,Data Management,3,116,t
+Computer Science (year: 4),6,TUTORIAL,Data Management,3,117,t
+Computer Science (year: 4),7,TUTORIAL,Data Management,3,118,t
+Computer Science (year: 4),8,TUTORIAL,Data Management,3,119,t
+Computer Science (year: 4),,LECTURE,Operating Systems,4,120,f
+Computer Science (year: 4),1,TUTORIAL,Operating Systems,4,121,f
+Computer Science (year: 4),2,TUTORIAL,Operating Systems,4,122,f
+Computer Science (year: 4),3,TUTORIAL,Operating Systems,4,123,f
+Computer Science (year: 4),4,TUTORIAL,Operating Systems,4,124,f
+Computer Science (year: 4),5,TUTORIAL,Operating Systems,4,125,f
+Computer Science (year: 4),6,TUTORIAL,Operating Systems,4,126,f
+Computer Science (year: 4),7,TUTORIAL,Operating Systems,4,127,f
+Computer Science (year: 4),8,TUTORIAL,Operating Systems,4,128,f
+Computer Science (year: 4),,LECTURE,Artificial intelligence,2,129,f
+Computer Science (year: 4),1,TUTORIAL,Artificial intelligence,2,130,f
+Computer Science (year: 4),2,TUTORIAL,Artificial intelligence,2,131,f
+Computer Science (year: 4),3,TUTORIAL,Artificial intelligence,2,132,f
+Computer Science (year: 4),4,TUTORIAL,Artificial intelligence,2,133,f
+Computer Science (year: 4),5,TUTORIAL,Artificial intelligence,2,134,f
+Computer Science (year: 4),6,TUTORIAL,Artificial intelligence,2,135,f
+Computer Science (year: 4),7,TUTORIAL,Artificial intelligence,2,136,f
+Computer Science (year: 4),8,TUTORIAL,Artificial intelligence,2,137,f
+Computer Science (year: 4),,LECTURE,Natural Language Processing,3,138,f
+Computer Science (year: 4),1,TUTORIAL,Natural Language Processing,3,139,f
+Computer Science (year: 4),2,TUTORIAL,Natural Language Processing,3,140,f
+Computer Science (year: 4),3,TUTORIAL,Natural Language Processing,3,141,f
+Computer Science (year: 4),4,TUTORIAL,Natural Language Processing,3,142,f
+Computer Science (year: 4),5,TUTORIAL,Natural Language Processing,3,143,f
+Computer Science (year: 4),6,TUTORIAL,Natural Language Processing,3,144,f
+Computer Science (year: 4),7,TUTORIAL,Natural Language Processing,3,145,f
+Computer Science (year: 4),8,TUTORIAL,Natural Language Processing,3,146,f
+Computer Science (year: 4),,LECTURE,Machine learning,4,147,f
+Computer Science (year: 4),1,TUTORIAL,Machine learning,4,148,f
+Computer Science (year: 4),2,TUTORIAL,Machine learning,4,149,f
+Computer Science (year: 4),3,TUTORIAL,Machine learning,4,150,f
+Computer Science (year: 4),4,TUTORIAL,Machine learning,4,151,f
+Computer Science (year: 4),5,TUTORIAL,Machine learning,4,152,f
+Computer Science (year: 4),6,TUTORIAL,Machine learning,4,153,f
+Computer Science (year: 4),7,TUTORIAL,Machine learning,4,154,f
+Computer Science (year: 4),8,TUTORIAL,Machine learning,4,155,f
+Information Systems (year: 2),,LECTURE,Introduction to algorithms,2,156,f
+Information Systems (year: 2),1,TUTORIAL,Introduction to algorithms,2,157,t
+Information Systems (year: 2),2,TUTORIAL,Introduction to algorithms,2,158,t
+Information Systems (year: 2),3,TUTORIAL,Introduction to algorithms,2,159,t
+Information Systems (year: 2),4,TUTORIAL,Introduction to algorithms,2,160,t
+Information Systems (year: 2),,LECTURE,Numerical Algorithms,3,161,f
+Information Systems (year: 2),1,TUTORIAL,Numerical Algorithms,3,162,f
+Information Systems (year: 2),2,TUTORIAL,Numerical Algorithms,3,163,f
+Information Systems (year: 2),3,TUTORIAL,Numerical Algorithms,3,164,f
+Information Systems (year: 2),4,TUTORIAL,Numerical Algorithms,3,165,f
+Information Systems (year: 2),,LECTURE,Number Theory,4,166,f
+Information Systems (year: 2),1,TUTORIAL,Number Theory,4,167,f
+Information Systems (year: 2),2,TUTORIAL,Number Theory,4,168,f
+Information Systems (year: 2),3,TUTORIAL,Number Theory,4,169,f
+Information Systems (year: 2),4,TUTORIAL,Number Theory,4,170,f
+Information Systems (year: 2),,LECTURE,Introductory Discrete Mathematics for Computer Science,2,171,f
+Information Systems (year: 2),1,TUTORIAL,Introductory Discrete Mathematics for Computer Science,2,172,f
+Information Systems (year: 2),2,TUTORIAL,Introductory Discrete Mathematics for Computer Science,2,173,f
+Information Systems (year: 2),3,TUTORIAL,Introductory Discrete Mathematics for Computer Science,2,174,f
+Information Systems (year: 2),4,TUTORIAL,Introductory Discrete Mathematics for Computer Science,2,175,f
+Information Systems (year: 2),,LECTURE,Computer Engineering,3,176,f
+Information Systems (year: 2),1,TUTORIAL,Computer Engineering,3,177,f
+Information Systems (year: 2),2,TUTORIAL,Computer Engineering,3,178,f
+Information Systems (year: 2),3,TUTORIAL,Computer Engineering,3,179,f
+Information Systems (year: 2),4,TUTORIAL,Computer Engineering,3,180,f
+Computer Science (year: 3),,LECTURE,Computer architecture,4,181,f
+Computer Science (year: 3),1,TUTORIAL,Computer architecture,4,182,t
+Computer Science (year: 3),2,TUTORIAL,Computer architecture,4,183,t
+Computer Science (year: 3),3,TUTORIAL,Computer architecture,4,184,t
+Computer Science (year: 3),4,TUTORIAL,Computer architecture,4,185,t
+Computer Science (year: 3),5,TUTORIAL,Computer architecture,4,186,t
+Computer Science (year: 3),6,TUTORIAL,Computer architecture,4,187,t
+Computer Science (year: 3),7,TUTORIAL,Computer architecture,4,188,t
+Computer Science (year: 3),8,TUTORIAL,Computer architecture,4,189,t
+Computer Science (year: 3),,LECTURE,Introduction to Computer Architecture,2,190,f
+Computer Science (year: 3),1,TUTORIAL,Introduction to Computer Architecture,2,191,f
+Computer Science (year: 3),2,TUTORIAL,Introduction to Computer Architecture,2,192,f
+Computer Science (year: 3),3,TUTORIAL,Introduction to Computer Architecture,2,193,f
+Computer Science (year: 3),4,TUTORIAL,Introduction to Computer Architecture,2,194,f
+Computer Science (year: 3),5,TUTORIAL,Introduction to Computer Architecture,2,195,f
+Computer Science (year: 3),6,TUTORIAL,Introduction to Computer Architecture,2,196,f
+Computer Science (year: 3),7,TUTORIAL,Introduction to Computer Architecture,2,197,f
+Computer Science (year: 3),8,TUTORIAL,Introduction to Computer Architecture,2,198,f
+Computer Science (year: 3),,LECTURE,Service Oriented Architecture,3,199,f
+Computer Science (year: 3),1,TUTORIAL,Service Oriented Architecture,3,200,f
+Computer Science (year: 3),2,TUTORIAL,Service Oriented Architecture,3,1,f
+Computer Science (year: 3),3,TUTORIAL,Service Oriented Architecture,3,2,f
+Computer Science (year: 3),4,TUTORIAL,Service Oriented Architecture,3,3,f
+Computer Science (year: 3),5,TUTORIAL,Service Oriented Architecture,3,4,f
+Computer Science (year: 3),6,TUTORIAL,Service Oriented Architecture,3,5,f
+Computer Science (year: 3),7,TUTORIAL,Service Oriented Architecture,3,6,f
+Computer Science (year: 3),8,TUTORIAL,Service Oriented Architecture,3,7,f
+Computer Science (year: 3),,LECTURE,Electronic Design,4,8,f
+Computer Science (year: 3),1,TUTORIAL,Electronic Design,4,9,f
+Computer Science (year: 3),2,TUTORIAL,Electronic Design,4,10,f
+Computer Science (year: 3),3,TUTORIAL,Electronic Design,4,11,f
+Computer Science (year: 3),4,TUTORIAL,Electronic Design,4,12,f
+Computer Science (year: 3),5,TUTORIAL,Electronic Design,4,13,f
+Computer Science (year: 3),6,TUTORIAL,Electronic Design,4,14,f
+Computer Science (year: 3),7,TUTORIAL,Electronic Design,4,15,f
+Computer Science (year: 3),8,TUTORIAL,Electronic Design,4,16,f
+Computer Science (year: 3),,LECTURE,Logic Design,2,17,f
+Computer Science (year: 3),1,TUTORIAL,Logic Design,2,18,f
+Computer Science (year: 3),2,TUTORIAL,Logic Design,2,19,f
+Computer Science (year: 3),3,TUTORIAL,Logic Design,2,20,f
+Computer Science (year: 3),4,TUTORIAL,Logic Design,2,21,f
+Computer Science (year: 3),5,TUTORIAL,Logic Design,2,22,f
+Computer Science (year: 3),6,TUTORIAL,Logic Design,2,23,f
+Computer Science (year: 3),7,TUTORIAL,Logic Design,2,24,f
+Computer Science (year: 3),8,TUTORIAL,Logic Design,2,25,f
+Mathematics (year: 3),,LECTURE,Processor Architecture,3,26,f
+Mathematics (year: 3),1,TUTORIAL,Processor Architecture,3,27,t
+Mathematics (year: 3),,LECTURE,Data Logic,4,28,f
+Mathematics (year: 3),1,TUTORIAL,Data Logic,4,29,f
+Mathematics (year: 3),,LECTURE,Computer Logic,2,30,f
+Mathematics (year: 3),1,TUTORIAL,Computer Logic,2,31,f
+Mathematics (year: 3),,LECTURE,Statistics,3,32,f
+Mathematics (year: 3),1,TUTORIAL,Statistics,3,33,f
+Mathematics (year: 3),,LECTURE,Graph theory,4,34,f
+Mathematics (year: 3),1,TUTORIAL,Graph theory,4,35,f
+Computer Science (year: 1),,LECTURE,Automata theory,2,36,f
+Computer Science (year: 1),1,TUTORIAL,Automata theory,2,37,t
+Computer Science (year: 1),2,TUTORIAL,Automata theory,2,38,t
+Computer Science (year: 1),3,TUTORIAL,Automata theory,2,39,t
+Computer Science (year: 1),4,TUTORIAL,Automata theory,2,40,t
+Computer Science (year: 1),5,TUTORIAL,Automata theory,2,41,t
+Computer Science (year: 1),6,TUTORIAL,Automata theory,2,42,t
+Computer Science (year: 1),7,TUTORIAL,Automata theory,2,43,t
+Computer Science (year: 1),8,TUTORIAL,Automata theory,2,44,t
+Computer Science (year: 1),,LECTURE,Complexity theory,3,45,f
+Computer Science (year: 1),1,TUTORIAL,Complexity theory,3,46,f
+Computer Science (year: 1),2,TUTORIAL,Complexity theory,3,47,f
+Computer Science (year: 1),3,TUTORIAL,Complexity theory,3,48,f
+Computer Science (year: 1),4,TUTORIAL,Complexity theory,3,49,f
+Computer Science (year: 1),5,TUTORIAL,Complexity theory,3,50,f
+Computer Science (year: 1),6,TUTORIAL,Complexity theory,3,51,f
+Computer Science (year: 1),7,TUTORIAL,Complexity theory,3,52,f
+Computer Science (year: 1),8,TUTORIAL,Complexity theory,3,53,f
+Computer Science (year: 1),,LECTURE,Multimedia,4,54,f
+Computer Science (year: 1),1,TUTORIAL,Multimedia,4,55,f
+Computer Science (year: 1),2,TUTORIAL,Multimedia,4,56,f
+Computer Science (year: 1),3,TUTORIAL,Multimedia,4,57,f
+Computer Science (year: 1),4,TUTORIAL,Multimedia,4,58,f
+Computer Science (year: 1),5,TUTORIAL,Multimedia,4,59,f
+Computer Science (year: 1),6,TUTORIAL,Multimedia,4,60,f
+Computer Science (year: 1),7,TUTORIAL,Multimedia,4,61,f
+Computer Science (year: 1),8,TUTORIAL,Multimedia,4,62,f
+Computer Science (year: 1),,LECTURE,Graphic design with computers,2,63,f
+Computer Science (year: 1),1,TUTORIAL,Graphic design with computers,2,64,f
+Computer Science (year: 1),2,TUTORIAL,Graphic design with computers,2,65,f
+Computer Science (year: 1),3,TUTORIAL,Graphic design with computers,2,66,f
+Computer Science (year: 1),4,TUTORIAL,Graphic design with computers,2,67,f
+Computer Science (year: 1),5,TUTORIAL,Graphic design with computers,2,68,f
+Computer Science (year: 1),6,TUTORIAL,Graphic design with computers,2,69,f
+Computer Science (year: 1),7,TUTORIAL,Graphic design with computers,2,70,f
+Computer Science (year: 1),8,TUTORIAL,Graphic design with computers,2,71,f
+Computer Science (year: 1),,LECTURE,Computer-aided Geometric Design,3,72,f
+Computer Science (year: 1),1,TUTORIAL,Computer-aided Geometric Design,3,73,f
+Computer Science (year: 1),2,TUTORIAL,Computer-aided Geometric Design,3,74,f
+Computer Science (year: 1),3,TUTORIAL,Computer-aided Geometric Design,3,75,f
+Computer Science (year: 1),4,TUTORIAL,Computer-aided Geometric Design,3,76,f
+Computer Science (year: 1),5,TUTORIAL,Computer-aided Geometric Design,3,77,f
+Computer Science (year: 1),6,TUTORIAL,Computer-aided Geometric Design,3,78,f
+Computer Science (year: 1),7,TUTORIAL,Computer-aided Geometric Design,3,79,f
+Computer Science (year: 1),8,TUTORIAL,Computer-aided Geometric Design,3,80,f
+Informatics (year: 3),,LECTURE,Scientific computing,4,81,f
+Informatics (year: 3),1,TUTORIAL,Scientific computing,4,82,t
+Informatics (year: 3),2,TUTORIAL,Scientific computing,4,83,t
+Informatics (year: 3),3,TUTORIAL,Scientific computing,4,84,t
+Informatics (year: 3),,LECTURE,Bioinformatics,2,85,f
+Informatics (year: 3),1,TUTORIAL,Bioinformatics,2,86,f
+Informatics (year: 3),2,TUTORIAL,Bioinformatics,2,87,f
+Informatics (year: 3),3,TUTORIAL,Bioinformatics,2,88,f
+Informatics (year: 3),,LECTURE,Geoinformatics,3,89,f
+Informatics (year: 3),1,TUTORIAL,Geoinformatics,3,90,f
+Informatics (year: 3),2,TUTORIAL,Geoinformatics,3,91,f
+Informatics (year: 3),3,TUTORIAL,Geoinformatics,3,92,f
+Informatics (year: 3),,LECTURE,Web Services,4,93,f
+Informatics (year: 3),1,TUTORIAL,Web Services,4,94,f
+Informatics (year: 3),2,TUTORIAL,Web Services,4,95,f
+Informatics (year: 3),3,TUTORIAL,Web Services,4,96,f
+Informatics (year: 3),,LECTURE,Web design,2,97,f
+Informatics (year: 3),1,TUTORIAL,Web design,2,98,f
+Informatics (year: 3),2,TUTORIAL,Web design,2,99,f
+Informatics (year: 3),3,TUTORIAL,Web design,2,100,f
+Applied Mathematics (year: 2),,LECTURE,Web Applets,3,101,f
+Applied Mathematics (year: 2),1,TUTORIAL,Web Applets,3,102,t
+Applied Mathematics (year: 2),2,TUTORIAL,Web Applets,3,103,t
+Applied Mathematics (year: 2),,LECTURE,Design Physics,4,104,f
+Applied Mathematics (year: 2),1,TUTORIAL,Design Physics,4,105,f
+Applied Mathematics (year: 2),2,TUTORIAL,Design Physics,4,106,f
+Applied Mathematics (year: 2),,LECTURE,Business process management,2,107,f
+Applied Mathematics (year: 2),1,TUTORIAL,Business process management,2,108,f
+Applied Mathematics (year: 2),2,TUTORIAL,Business process management,2,109,f
+Applied Mathematics (year: 2),,LECTURE,Computational geometry,3,110,f
+Applied Mathematics (year: 2),1,TUTORIAL,Computational geometry,3,111,f
+Applied Mathematics (year: 2),2,TUTORIAL,Computational geometry,3,112,f
+Applied Mathematics (year: 2),,LECTURE,Computational linguistics,4,113,f
+Applied Mathematics (year: 2),1,TUTORIAL,Computational linguistics,4,114,f
+Applied Mathematics (year: 2),2,TUTORIAL,Computational linguistics,4,115,f
+Applied Mathematics (year: 4),,LECTURE,Digital Libraries,2,116,f
+Applied Mathematics (year: 4),1,TUTORIAL,Digital Libraries,2,117,t
+Applied Mathematics (year: 4),2,TUTORIAL,Digital Libraries,2,118,t
+Applied Mathematics (year: 4),,LECTURE,Nonkilling Technology,3,119,f
+Applied Mathematics (year: 4),1,TUTORIAL,Nonkilling Technology,3,120,f
+Applied Mathematics (year: 4),2,TUTORIAL,Nonkilling Technology,3,121,f
+Applied Mathematics (year: 4),,LECTURE,Quantum computing,4,122,f
+Applied Mathematics (year: 4),1,TUTORIAL,Quantum computing,4,123,f
+Applied Mathematics (year: 4),2,TUTORIAL,Quantum computing,4,124,f
+Applied Mathematics (year: 4),,LECTURE,Software freedom,2,125,f
+Applied Mathematics (year: 4),1,TUTORIAL,Software freedom,2,126,f
+Applied Mathematics (year: 4),2,TUTORIAL,Software freedom,2,127,f
+Applied Mathematics (year: 4),,LECTURE,Device Utilization,3,128,f
+Applied Mathematics (year: 4),1,TUTORIAL,Device Utilization,3,129,f
+Applied Mathematics (year: 4),2,TUTORIAL,Device Utilization,3,130,f
+Mathematics (year: 1),,LECTURE,Parallel computing,4,131,f
+Mathematics (year: 1),1,TUTORIAL,Parallel computing,4,132,t
+Mathematics (year: 1),,LECTURE,Concurrency and real-time programming,2,133,f
+Mathematics (year: 1),1,TUTORIAL,Concurrency and real-time programming,2,134,f
+Mathematics (year: 1),,LECTURE,Algebra,3,135,f
+Mathematics (year: 1),1,TUTORIAL,Algebra,3,136,f
+Mathematics (year: 1),,LECTURE,Fundamental Mathematics,4,137,f
+Mathematics (year: 1),1,TUTORIAL,Fundamental Mathematics,4,138,f
+Mathematics (year: 1),,LECTURE,Analysis,2,139,f
+Mathematics (year: 1),1,TUTORIAL,Analysis,2,140,f
