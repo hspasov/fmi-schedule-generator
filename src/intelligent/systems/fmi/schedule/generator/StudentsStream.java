@@ -22,4 +22,9 @@ public record StudentsStream(String major, int year, int groups)  {
             Integer.parseInt(inputParts[groupsIdx])
         );
     }
+
+    @Override
+    public String toString() {
+        return major() + " (year: " + year() + ")";
+    }
 }
