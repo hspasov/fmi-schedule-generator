@@ -1,1 +1,150 @@
 sessionType,courseName,sessionLength,teacherId,areComputersRequired
+LECTURE,Computer Animation Fundamentals,2,1,f
+TUTORIAL,Computer Animation Fundamentals,2,2,t
+LECTURE,Web Application Design,3,3,f
+TUTORIAL,Web Application Design,3,4,f
+TUTORIAL,Web Application Design,3,5,f
+LECTURE,Image Processing Fundamentals,4,6,f
+TUTORIAL,Image Processing Fundamentals,4,7,f
+TUTORIAL,Image Processing Fundamentals,4,8,f
+TUTORIAL,Image Processing Fundamentals,4,9,f
+LECTURE,Computer Vision,2,10,f
+TUTORIAL,Computer Vision,2,11,f
+TUTORIAL,Computer Vision,2,12,f
+TUTORIAL,Computer Vision,2,13,f
+TUTORIAL,Computer Vision,2,14,f
+LECTURE,Introduction to Robotics,3,15,f
+TUTORIAL,Introduction to Robotics,3,16,f
+LECTURE,Software Engineering,4,17,f
+TUTORIAL,Software Engineering,4,18,t
+TUTORIAL,Software Engineering,4,19,t
+LECTURE,Software Testing,2,20,f
+TUTORIAL,Software Testing,2,21,f
+TUTORIAL,Software Testing,2,22,f
+TUTORIAL,Software Testing,2,23,f
+LECTURE,Introduction to AI,3,24,f
+TUTORIAL,Introduction to AI,3,25,f
+TUTORIAL,Introduction to AI,3,26,f
+TUTORIAL,Introduction to AI,3,27,f
+TUTORIAL,Introduction to AI,3,28,f
+LECTURE,Big Data Storage and Analysis with Hadoop,4,29,f
+TUTORIAL,Big Data Storage and Analysis with Hadoop,4,30,f
+LECTURE,Practical Cybersecurity,2,31,f
+TUTORIAL,Practical Cybersecurity,2,32,f
+TUTORIAL,Practical Cybersecurity,2,33,f
+LECTURE,Programming on Massively Parallel Systems,3,34,f
+TUTORIAL,Programming on Massively Parallel Systems,3,35,t
+TUTORIAL,Programming on Massively Parallel Systems,3,36,t
+TUTORIAL,Programming on Massively Parallel Systems,3,37,t
+LECTURE,Affective Computing,4,38,f
+TUTORIAL,Affective Computing,4,39,f
+TUTORIAL,Affective Computing,4,40,f
+TUTORIAL,Affective Computing,4,41,f
+TUTORIAL,Affective Computing,4,42,f
+LECTURE,Network Science,2,43,f
+TUTORIAL,Network Science,2,44,f
+LECTURE,Mobile Biometrics,3,45,f
+TUTORIAL,Mobile Biometrics,3,46,f
+TUTORIAL,Mobile Biometrics,3,47,f
+LECTURE,Social Media Mining,4,48,f
+TUTORIAL,Social Media Mining,4,49,f
+TUTORIAL,Social Media Mining,4,50,f
+TUTORIAL,Social Media Mining,4,51,f
+LECTURE,Computer Networks I,2,52,f
+TUTORIAL,Computer Networks I,2,53,t
+TUTORIAL,Computer Networks I,2,54,t
+TUTORIAL,Computer Networks I,2,55,t
+TUTORIAL,Computer Networks I,2,56,t
+LECTURE,Computing and Network Security,3,57,f
+TUTORIAL,Computing and Network Security,3,58,f
+LECTURE,Secure Coding,4,59,f
+TUTORIAL,Secure Coding,4,60,f
+TUTORIAL,Secure Coding,4,61,f
+LECTURE,Programming Languages,2,62,f
+TUTORIAL,Programming Languages,2,63,f
+TUTORIAL,Programming Languages,2,64,f
+TUTORIAL,Programming Languages,2,65,f
+LECTURE,Software Systems Development,3,66,f
+TUTORIAL,Software Systems Development,3,67,f
+TUTORIAL,Software Systems Development,3,68,f
+TUTORIAL,Software Systems Development,3,69,f
+TUTORIAL,Software Systems Development,3,70,f
+LECTURE,Compilers,4,71,f
+TUTORIAL,Compilers,4,72,t
+LECTURE,Software Development for Mobile Devices,2,73,f
+TUTORIAL,Software Development for Mobile Devices,2,74,f
+TUTORIAL,Software Development for Mobile Devices,2,75,f
+LECTURE,Database Design,3,76,f
+TUTORIAL,Database Design,3,77,f
+TUTORIAL,Database Design,3,78,f
+TUTORIAL,Database Design,3,79,f
+LECTURE,Intro to Augmented and Virtual Reality,4,80,f
+TUTORIAL,Intro to Augmented and Virtual Reality,4,81,f
+TUTORIAL,Intro to Augmented and Virtual Reality,4,82,f
+TUTORIAL,Intro to Augmented and Virtual Reality,4,83,f
+TUTORIAL,Intro to Augmented and Virtual Reality,4,84,f
+LECTURE,Natural Language Processing,2,85,f
+TUTORIAL,Natural Language Processing,2,86,f
+LECTURE,Computer System Design & Lab,3,87,f
+TUTORIAL,Computer System Design & Lab,3,88,t
+TUTORIAL,Computer System Design & Lab,3,89,t
+LECTURE,CMOS/VLSI Design & Lab,4,90,f
+TUTORIAL,CMOS/VLSI Design & Lab,4,91,f
+TUTORIAL,CMOS/VLSI Design & Lab,4,92,f
+TUTORIAL,CMOS/VLSI Design & Lab,4,93,f
+LECTURE,FPGA Design and Analysis,2,94,f
+TUTORIAL,FPGA Design and Analysis,2,95,f
+TUTORIAL,FPGA Design and Analysis,2,96,f
+TUTORIAL,FPGA Design and Analysis,2,97,f
+TUTORIAL,FPGA Design and Analysis,2,98,f
+LECTURE,Control of Mobile Robots,3,99,f
+TUTORIAL,Control of Mobile Robots,3,100,f
+LECTURE,Digital Circuit Synthesis,4,101,f
+TUTORIAL,Digital Circuit Synthesis,4,102,f
+TUTORIAL,Digital Circuit Synthesis,4,103,f
+LECTURE,Embedded Systems,2,104,f
+TUTORIAL,Embedded Systems,2,105,t
+TUTORIAL,Embedded Systems,2,106,t
+TUTORIAL,Embedded Systems,2,107,t
+LECTURE,Principles of Secure Hardware Design,3,108,f
+TUTORIAL,Principles of Secure Hardware Design,3,109,f
+TUTORIAL,Principles of Secure Hardware Design,3,110,f
+TUTORIAL,Principles of Secure Hardware Design,3,111,f
+TUTORIAL,Principles of Secure Hardware Design,3,112,f
+LECTURE,Cryptographic Hardware and Embed Sys,4,113,f
+TUTORIAL,Cryptographic Hardware and Embed Sys,4,114,f
+LECTURE,Brain-Computer Interfaces,2,115,f
+TUTORIAL,Brain-Computer Interfaces,2,116,f
+TUTORIAL,Brain-Computer Interfaces,2,117,f
+LECTURE,VLSI Testing,3,118,f
+TUTORIAL,VLSI Testing,3,119,f
+TUTORIAL,VLSI Testing,3,120,f
+TUTORIAL,VLSI Testing,3,121,f
+LECTURE,Automata Theory and Formal Languages,4,122,f
+TUTORIAL,Automata Theory and Formal Languages,4,123,t
+TUTORIAL,Automata Theory and Formal Languages,4,124,t
+TUTORIAL,Automata Theory and Formal Languages,4,125,t
+TUTORIAL,Automata Theory and Formal Languages,4,126,t
+LECTURE,Computational Geometry,2,127,f
+TUTORIAL,Computational Geometry,2,128,f
+LECTURE,Quantum Computing,3,129,f
+TUTORIAL,Quantum Computing,3,130,f
+TUTORIAL,Quantum Computing,3,131,f
+LECTURE,Privacy Preserving Infrastructures,4,132,f
+TUTORIAL,Privacy Preserving Infrastructures,4,133,f
+TUTORIAL,Privacy Preserving Infrastructures,4,134,f
+TUTORIAL,Privacy Preserving Infrastructures,4,135,f
+LECTURE,Independent Study,2,136,f
+TUTORIAL,Independent Study,2,137,f
+TUTORIAL,Independent Study,2,138,f
+TUTORIAL,Independent Study,2,139,f
+TUTORIAL,Independent Study,2,140,f
+LECTURE,Senior Project,3,141,f
+TUTORIAL,Senior Project,3,142,t
+LECTURE,Supervised Research,4,143,f
+TUTORIAL,Supervised Research,4,144,f
+TUTORIAL,Supervised Research,4,145,f
+LECTURE,Industry Internship,2,146,f
+TUTORIAL,Industry Internship,2,147,f
+TUTORIAL,Industry Internship,2,148,f
+TUTORIAL,Industry Internship,2,149,f
