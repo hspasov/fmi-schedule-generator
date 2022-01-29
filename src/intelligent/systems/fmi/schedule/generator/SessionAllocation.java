@@ -20,7 +20,7 @@ public record SessionAllocation(
             dayOfWeek.toString(),
             groupNumber == null ? "" : String.valueOf(groupNumber),
             String.valueOf(startHour),
-            course.name(),
+            course.getName(),
             hall.faculty(),
             hall.roomNumber(),
             teacher.name()

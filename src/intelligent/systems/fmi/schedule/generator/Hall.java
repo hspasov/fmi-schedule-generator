@@ -1,5 +1,7 @@
 package intelligent.systems.fmi.schedule.generator;
 
+import java.util.Objects;
+
 public record Hall(String faculty, String roomNumber, int availableSeats, boolean isComputerLab) {
     public static Hall fromString(String input) {
         final int expectedParts = 4;
@@ -30,5 +32,18 @@ public record Hall(String faculty, String roomNumber, int availableSeats, boolea
             Integer.parseInt(inputParts[availableSeatsIdx]),
             isComputerLab
         );
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Hall hall = (Hall) o;
+        return faculty.equals(hall.faculty) && roomNumber.equals(hall.roomNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(faculty, roomNumber);
     }
 }

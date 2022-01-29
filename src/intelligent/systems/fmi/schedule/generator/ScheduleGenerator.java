@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -96,6 +97,31 @@ public class ScheduleGenerator {
         this.students = students;
         this.mandatoryCourses = mandatoryCourses;
         this.electiveCourses = electiveCourses;
+
+        Set<Slot> slots = new HashSet<>();
+
+        for (DayOfWeek dayOfWeek : Schedule.SCHEDULED_DAYS_OF_WEEK) {
+            for (int hour = Schedule.START_HOUR; hour < Schedule.END_HOUR; hour++) {
+                for (Hall hall : halls) {
+                    slots.add(new Slot(dayOfWeek, hour, hall));
+                }
+            }
+        }
+
+        for (MandatoryCourse course : this.mandatoryCourses) {
+            course.setAvailableStartTimeSlots(slots);
+        }
+    }
+
+    public Schedule generate() {
+        Set<MandatoryCourse> coursesToSchedule = new HashSet<>(this.mandatoryCourses);
+        Schedule schedule = new Schedule();
+
+        while(!coursesToSchedule.isEmpty()) {
+
+        }
+
+        return schedule;
     }
 
     public static void main(String[] args) {
@@ -121,5 +147,6 @@ public class ScheduleGenerator {
             mandatoryCourses,
             electiveCourses
         );
+        Schedule schedule = generator.generate();
     }
 }
