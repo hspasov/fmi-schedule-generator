@@ -1,5 +1,7 @@
 package intelligent.systems.fmi.schedule.generator;
 
+import java.util.Objects;
+
 public record StudentsStream(String major, int year, int groups)  {
     public static StudentsStream fromString(String input) {
         final int expectedParts = 3;
@@ -26,5 +28,18 @@ public record StudentsStream(String major, int year, int groups)  {
     @Override
     public String toString() {
         return major() + " (year: " + year() + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudentsStream that = (StudentsStream) o;
+        return year == that.year && major.equals(that.major);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(major, year);
     }
 }

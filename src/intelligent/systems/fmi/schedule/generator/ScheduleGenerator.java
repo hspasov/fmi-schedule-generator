@@ -4,15 +4,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ScheduleGenerator {
     final private Map<String, StudentsStream> studentsStreams;
@@ -98,12 +98,12 @@ public class ScheduleGenerator {
         this.mandatoryCourses = mandatoryCourses;
         this.electiveCourses = electiveCourses;
 
-        Set<Slot> slots = new HashSet<>();
+        Set<HallTimeSlot> slots = new HashSet<>();
 
         for (DayOfWeek dayOfWeek : Schedule.SCHEDULED_DAYS_OF_WEEK) {
             for (int hour = Schedule.START_HOUR; hour < Schedule.END_HOUR; hour++) {
                 for (Hall hall : halls) {
-                    slots.add(new Slot(dayOfWeek, hour, hall));
+                    slots.add(new HallTimeSlot(hall, new TimeSlot(dayOfWeek, hour)));
                 }
             }
         }
@@ -111,6 +111,77 @@ public class ScheduleGenerator {
         for (MandatoryCourse course : this.mandatoryCourses) {
             course.setAvailableStartTimeSlots(slots);
         }
+    }
+
+    private void enforceHallMaxCapacity (MandatoryCourse courseToSchedule, Set<Student> allStudents) {
+        long attendingStudentsCount = allStudents.stream()
+            .filter(student -> student.studentsStream().equals(courseToSchedule.getStudentsStream()))
+            .filter(student -> (
+                courseToSchedule.getGroupNumber() == null ||
+                    student.groupNumber() == courseToSchedule.getGroupNumber()
+            )).count();
+
+        Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+        availableStartTimeSlots.removeIf(slot -> slot.hall().availableSeats() < attendingStudentsCount);
+    }
+
+    private void enforceComputerLabRequirement (MandatoryCourse courseToSchedule) {
+        Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+        availableStartTimeSlots.removeIf(
+            slot -> courseToSchedule.areComputersRequired() && !slot.hall().isComputerLab()
+        );
+    }
+
+    // TODO arc consistency must be applied for all enforce functions that take schedule
+    private void enforceTeacherAvailability (MandatoryCourse courseToSchedule, Schedule schedule) {
+        Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+        availableStartTimeSlots.removeIf(
+            slot -> !schedule.isTeacherAvailableAt(courseToSchedule.getTeacher(), slot.timeSlot())
+        );
+    }
+
+    private void enforceSessionLengthRequirement (MandatoryCourse courseToSchedule, Schedule schedule) {
+        Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+
+        for (Iterator<HallTimeSlot> it = availableStartTimeSlots.iterator(); it.hasNext();) {
+            HallTimeSlot startTimeSlot = it.next();
+
+            if (startTimeSlot.timeSlot().hour() + courseToSchedule.getSessionLengthHours() > Schedule.END_HOUR) {
+                it.remove();
+                continue;
+            }
+
+            List<HallTimeSlot> sessionSlots = IntStream.range(0, courseToSchedule.getSessionLengthHours())
+                .mapToObj(hourOffset -> new HallTimeSlot(
+                    startTimeSlot.hall(),
+                    new TimeSlot(
+                        startTimeSlot.timeSlot().dayOfWeek(),
+                        startTimeSlot.timeSlot().hour() + hourOffset
+                    )))
+                .toList();
+
+            for (HallTimeSlot sessionSlot : sessionSlots) {
+                if (!schedule.isHallTimeSlotAvailable(sessionSlot)) {
+                    it.remove();
+                    break;
+                }
+            }
+        }
+    }
+
+    private void markSlotAsAllocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
+        courseToSchedule.getAvailableStartTimeSlots().remove(slot);
+    }
+
+    private void markSlotAsUnallocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
+        courseToSchedule.getAvailableStartTimeSlots().add(slot);
+    }
+
+    private void enforceConstraints(Set<MandatoryCourse> coursesToSchedule, Schedule schedule) {
+        // TODO create new class - MandatoryCourseAllocationCandidate
+        // TODO create an abstract class Course
+        // TODO ElectiveCourses
+
     }
 
     public Schedule generate() {

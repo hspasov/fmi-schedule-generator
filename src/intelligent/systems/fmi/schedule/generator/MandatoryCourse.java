@@ -1,8 +1,6 @@
 package intelligent.systems.fmi.schedule.generator;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -14,8 +12,8 @@ public class MandatoryCourse {
     private final String name;
     private final Teacher teacher;
     private final int sessionLengthHours;
-    private final boolean areComputersRequired;
-    private Set<Slot> availableStartTimeSlots = new HashSet<>();
+    private final boolean computersRequired;
+    private Set<HallTimeSlot> availableStartTimeSlots = new HashSet<>();
 
     public static MandatoryCourse fromString(
         String input,
@@ -75,7 +73,7 @@ public class MandatoryCourse {
         String name,
         int sessionLengthHours,
         Teacher teacher,
-        boolean areComputersRequired
+        boolean computersRequired
     ) {
         this.studentsStream = studentsStream;
         this.groupNumber = groupNumber;
@@ -83,7 +81,7 @@ public class MandatoryCourse {
         this.name = name;
         this.sessionLengthHours = sessionLengthHours;
         this.teacher = teacher;
-        this.areComputersRequired = areComputersRequired;
+        this.computersRequired = computersRequired;
     }
 
     public StudentsStream getStudentsStream() {
@@ -110,15 +108,15 @@ public class MandatoryCourse {
         return teacher;
     }
 
-    public boolean isAreComputersRequired() {
-        return areComputersRequired;
+    public boolean areComputersRequired() {
+        return computersRequired;
     }
 
-    public Set<Slot> getAvailableStartTimeSlots() {
+    public Set<HallTimeSlot> getAvailableStartTimeSlots() {
         return this.availableStartTimeSlots;
     }
 
-    public void setAvailableStartTimeSlots(Set<Slot> slots) {
+    public void setAvailableStartTimeSlots(Set<HallTimeSlot> slots) {
         this.availableStartTimeSlots = new HashSet<>(slots);
     }
 

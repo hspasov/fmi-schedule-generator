@@ -1,5 +1,7 @@
 package intelligent.systems.fmi.schedule.generator;
 
+import java.util.Objects;
+
 public record Teacher(String id, String name) {
     public static Teacher fromString(String input) {
         final int expectedParts = 2;
@@ -16,5 +18,18 @@ public record Teacher(String id, String name) {
             );
         }
         return new Teacher(inputParts[idIdx], inputParts[nameIdx]);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return id.equals(teacher.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
