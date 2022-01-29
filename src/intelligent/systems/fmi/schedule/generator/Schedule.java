@@ -3,6 +3,7 @@ package intelligent.systems.fmi.schedule.generator;
 import java.sql.Time;
 import java.time.DayOfWeek;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -47,5 +48,26 @@ public class Schedule {
 
     public boolean isHallTimeSlotAvailable(HallTimeSlot slot) {
         return !this.sessionAllocations.containsKey(slot);
+    }
+
+    public void markSlotAsAllocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
+        this.sessionAllocations.put(slot, new SessionAllocation(
+            courseToSchedule.getStudentsStream(),
+            slot.timeSlot().dayOfWeek(),
+            courseToSchedule.getGroupNumber(),
+            slot.timeSlot().hour(),
+            courseToSchedule,
+            slot.hall(),
+            courseToSchedule.getTeacher()
+        ));
+        this.teachersTimeSlotAllocations.putIfAbsent(courseToSchedule.getTeacher(), new HashSet<>());
+        this.teachersTimeSlotAllocations.get(courseToSchedule.getTeacher()).add(slot.timeSlot());
+        // TODO students
+    }
+
+    public void markSlotAsUnallocated (HallTimeSlot slot) {
+        SessionAllocation allocation = this.sessionAllocations.remove(slot);
+        this.teachersTimeSlotAllocations.get(allocation.teacher()).remove(slot.timeSlot());
+        // TODO students
     }
 }

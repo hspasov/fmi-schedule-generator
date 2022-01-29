@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -21,6 +22,7 @@ public class ScheduleGenerator {
     final private Set<Student> students;
     final private Set<MandatoryCourse> mandatoryCourses;
     final private Set<ElectiveCourse> electiveCourses;
+    final private Schedule schedule = new Schedule();
 
     private static List<String> readCSVFileLines(String filePath) {
         List<String> lines = new ArrayList<>();
@@ -113,8 +115,8 @@ public class ScheduleGenerator {
         }
     }
 
-    private void enforceHallMaxCapacity (MandatoryCourse courseToSchedule, Set<Student> allStudents) {
-        long attendingStudentsCount = allStudents.stream()
+    private void enforceHallMaxCapacity (MandatoryCourse courseToSchedule) {
+        long attendingStudentsCount = this.students.stream()
             .filter(student -> student.studentsStream().equals(courseToSchedule.getStudentsStream()))
             .filter(student -> (
                 courseToSchedule.getGroupNumber() == null ||
@@ -133,20 +135,30 @@ public class ScheduleGenerator {
     }
 
     // TODO arc consistency must be applied for all enforce functions that take schedule
-    private void enforceTeacherAvailability (MandatoryCourse courseToSchedule, Schedule schedule) {
+    private Set<HallTimeSlot> enforceTeacherAvailability (MandatoryCourse courseToSchedule) {
         Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
-        availableStartTimeSlots.removeIf(
-            slot -> !schedule.isTeacherAvailableAt(courseToSchedule.getTeacher(), slot.timeSlot())
-        );
+        Set<HallTimeSlot> removedStartTimeSlots = new HashSet<>();
+
+        for (Iterator<HallTimeSlot> it = availableStartTimeSlots.iterator(); it.hasNext();) {
+            HallTimeSlot startTimeSlot = it.next();
+
+            if (!this.schedule.isTeacherAvailableAt(courseToSchedule.getTeacher(), startTimeSlot.timeSlot())) {
+                removedStartTimeSlots.add(startTimeSlot);
+                it.remove();
+            }
+        }
+        return removedStartTimeSlots;
     }
 
-    private void enforceSessionLengthRequirement (MandatoryCourse courseToSchedule, Schedule schedule) {
+    private Set<HallTimeSlot> enforceSessionLengthRequirement (MandatoryCourse courseToSchedule) {
         Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+        Set<HallTimeSlot> removedStartTimeSlots = new HashSet<>();
 
         for (Iterator<HallTimeSlot> it = availableStartTimeSlots.iterator(); it.hasNext();) {
             HallTimeSlot startTimeSlot = it.next();
 
             if (startTimeSlot.timeSlot().hour() + courseToSchedule.getSessionLengthHours() > Schedule.END_HOUR) {
+                removedStartTimeSlots.add(startTimeSlot);
                 it.remove();
                 continue;
             }
@@ -161,20 +173,15 @@ public class ScheduleGenerator {
                 .toList();
 
             for (HallTimeSlot sessionSlot : sessionSlots) {
-                if (!schedule.isHallTimeSlotAvailable(sessionSlot)) {
+                if (!this.schedule.isHallTimeSlotAvailable(sessionSlot)) {
+                    removedStartTimeSlots.add(startTimeSlot);
                     it.remove();
                     break;
                 }
             }
         }
-    }
 
-    private void markSlotAsAllocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
-        courseToSchedule.getAvailableStartTimeSlots().remove(slot);
-    }
-
-    private void markSlotAsUnallocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
-        courseToSchedule.getAvailableStartTimeSlots().add(slot);
+        return removedStartTimeSlots;
     }
 
     private void enforceConstraints(Set<MandatoryCourse> coursesToSchedule, Schedule schedule) {
@@ -184,15 +191,55 @@ public class ScheduleGenerator {
 
     }
 
+    private MandatoryCourse getMinimumAvailableSlotsCourse(Set<MandatoryCourse> coursesToSchedule) {
+        // TODO optimize
+        return coursesToSchedule.stream()
+            .min(Comparator.comparingInt(course -> course.getAvailableStartTimeSlots().size()))
+            .orElseThrow();
+    }
+
+    private void backtrack(Set<MandatoryCourse> coursesToSchedule, MandatoryCourse courseToUnschedule) {
+        coursesToSchedule.add(courseToUnschedule);
+        //this.schedule.markSlotAsUnallocated();
+        //courseToUnschedule.getAvailableStartTimeSlots().add(slot);
+    }
+
+    private boolean searchForSolution(Set<MandatoryCourse> coursesToSchedule) {
+        while(!coursesToSchedule.isEmpty()) {
+            MandatoryCourse courseToSchedule = this.getMinimumAvailableSlotsCourse(coursesToSchedule);
+            coursesToSchedule.remove(courseToSchedule);
+            Set<HallTimeSlot> removedStartTimeSlots = this.enforceSessionLengthRequirement(courseToSchedule);
+            removedStartTimeSlots.addAll(this.enforceTeacherAvailability(courseToSchedule));
+
+            Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+            if (availableStartTimeSlots.isEmpty()) {
+                courseToSchedule.getAvailableStartTimeSlots().addAll(removedStartTimeSlots);
+                coursesToSchedule.add(courseToSchedule);
+                return false;
+            }
+
+            for (HallTimeSlot slot : availableStartTimeSlots) {
+                this.schedule.markSlotAsAllocated(courseToSchedule, slot);
+                if (searchForSolution(coursesToSchedule)) {
+                    return true;
+                }
+                this.schedule.markSlotAsUnallocated(slot);
+            }
+        }
+        return true;
+    }
+
     public Schedule generate() {
         Set<MandatoryCourse> coursesToSchedule = new HashSet<>(this.mandatoryCourses);
-        Schedule schedule = new Schedule();
-
-        while(!coursesToSchedule.isEmpty()) {
-
+        for (MandatoryCourse course : coursesToSchedule) {
+            this.enforceHallMaxCapacity(course);
+            this.enforceComputerLabRequirement(course);
         }
-
-        return schedule;
+        if (!this.searchForSolution(coursesToSchedule)) {
+            // NO SOLUTION
+            return null;
+        }
+        return this.schedule;
     }
 
     public static void main(String[] args) {
