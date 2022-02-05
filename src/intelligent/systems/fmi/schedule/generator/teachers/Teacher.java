@@ -1,4 +1,4 @@
-package intelligent.systems.fmi.schedule.generator;
+package intelligent.systems.fmi.schedule.generator.teachers;
 
 import java.util.Objects;
 

@@ -1,4 +1,6 @@
-package intelligent.systems.fmi.schedule.generator;
+package intelligent.systems.fmi.schedule.generator.allocation;
+
+import intelligent.systems.fmi.schedule.generator.Schedule;
 
 import java.time.DayOfWeek;
 

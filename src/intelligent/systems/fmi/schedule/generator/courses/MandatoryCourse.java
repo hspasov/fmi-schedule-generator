@@ -1,19 +1,14 @@
-package intelligent.systems.fmi.schedule.generator;
+package intelligent.systems.fmi.schedule.generator.courses;
 
-import java.util.HashSet;
+import intelligent.systems.fmi.schedule.generator.students.StudentsStream;
+import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
+
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
-public class MandatoryCourse {
+public class MandatoryCourse extends Course {
     private final StudentsStream studentsStream;
     private final Integer groupNumber;
-    private final SessionType sessionType;
-    private final String name;
-    private final Teacher teacher;
-    private final int sessionLengthHours;
-    private final boolean computersRequired;
-    private Set<HallTimeSlot> availableStartTimeSlots = new HashSet<>();
 
     public static MandatoryCourse fromString(
         String input,
@@ -75,13 +70,9 @@ public class MandatoryCourse {
         Teacher teacher,
         boolean computersRequired
     ) {
+        super(sessionType, name, sessionLengthHours, teacher, computersRequired);
         this.studentsStream = studentsStream;
         this.groupNumber = groupNumber;
-        this.sessionType = sessionType;
-        this.name = name;
-        this.sessionLengthHours = sessionLengthHours;
-        this.teacher = teacher;
-        this.computersRequired = computersRequired;
     }
 
     public StudentsStream getStudentsStream() {
@@ -92,45 +83,18 @@ public class MandatoryCourse {
         return groupNumber;
     }
 
-    public SessionType getSessionType() {
-        return sessionType;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getSessionLengthHours() {
-        return sessionLengthHours;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public boolean areComputersRequired() {
-        return computersRequired;
-    }
-
-    public Set<HallTimeSlot> getAvailableStartTimeSlots() {
-        return this.availableStartTimeSlots;
-    }
-
-    public void setAvailableStartTimeSlots(Set<HallTimeSlot> slots) {
-        this.availableStartTimeSlots = new HashSet<>(slots);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MandatoryCourse that = (MandatoryCourse) o;
         return studentsStream.equals(that.studentsStream) && Objects.equals(groupNumber, that.groupNumber) &&
-            sessionType == that.sessionType && name.equals(that.name) && teacher.equals(that.teacher);
+            getSessionType() == that.getSessionType() && getName().equals(that.getName()) && getTeacher().equals(
+            that.getTeacher());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(studentsStream, groupNumber, sessionType, name, teacher);
+        return Objects.hash(studentsStream, groupNumber, getSessionType(), getName(), getTeacher());
     }
 }

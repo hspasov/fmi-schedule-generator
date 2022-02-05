@@ -1,13 +1,19 @@
-package intelligent.systems.fmi.schedule.generator;
+package intelligent.systems.fmi.schedule.generator.courses;
+
+import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
 
 import java.util.Map;
 
-public record ElectiveCourse(
-    SessionType sessionType,
-    String name,
-    int sessionLengthHours,
-    Teacher teacher,
-    boolean areComputersRequired) {
+public class ElectiveCourse extends Course {
+    public ElectiveCourse(
+        SessionType sessionType,
+        String name,
+        int sessionLengthHours,
+        Teacher teacher,
+        boolean areComputersRequired
+    ) {
+        super(sessionType, name, sessionLengthHours, teacher, areComputersRequired);
+    }
 
     public static ElectiveCourse fromString(String input, Map<String, Teacher> teachers) {
         final int expectedParts = 5;

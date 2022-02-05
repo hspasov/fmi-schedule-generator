@@ -1,4 +1,4 @@
-package intelligent.systems.fmi.schedule.generator;
+package intelligent.systems.fmi.schedule.generator.courses;
 
 public enum SessionType {
     LECTURE,

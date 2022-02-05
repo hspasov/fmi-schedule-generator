@@ -1,5 +1,15 @@
 package intelligent.systems.fmi.schedule.generator;
 
+import intelligent.systems.fmi.schedule.generator.allocation.HallTimeSlot;
+import intelligent.systems.fmi.schedule.generator.allocation.SessionAllocation;
+import intelligent.systems.fmi.schedule.generator.allocation.TimeSlot;
+import intelligent.systems.fmi.schedule.generator.courses.MandatoryCourse;
+import intelligent.systems.fmi.schedule.generator.halls.Hall;
+import intelligent.systems.fmi.schedule.generator.students.Student;
+import intelligent.systems.fmi.schedule.generator.students.StudentsGroup;
+import intelligent.systems.fmi.schedule.generator.students.StudentsStream;
+import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
+
 import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,8 +38,6 @@ public class Schedule {
 
     }
 
-    // TODO refactor Teacher and Student to have a common parent
-
     public boolean isTeacherScheduledAt(Teacher teacher, TimeSlot timeSlot) {
         Set<HallTimeSlot> teacherTimeSlots = this.teachersAllocations.get(teacher);
         if (teacherTimeSlots == null) {
@@ -56,7 +64,7 @@ public class Schedule {
         return false;
     }
 
-    public boolean isStudentAvailableAt (Student student, TimeSlot timeSlot) {
+    public boolean isStudentAvailableAt(Student student, TimeSlot timeSlot) {
         Set<TimeSlot> studentTimeSlots = this.studentsTimeSlotAllocations.get(student);
         if (studentTimeSlots == null) {
             return true;
@@ -68,8 +76,7 @@ public class Schedule {
         return this.sessionAllocations.containsKey(slot);
     }
 
-    public void markSlotAsAllocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
-        // TODO simplify sessionAllocation
+    public void markSlotAsAllocated(MandatoryCourse courseToSchedule, HallTimeSlot slot) {
         this.teachersAllocations.putIfAbsent(courseToSchedule.getTeacher(), new HashSet<>());
 
         for (int hourOffset = 0; hourOffset < courseToSchedule.getSessionLengthHours(); hourOffset++) {
@@ -80,15 +87,7 @@ public class Schedule {
                     slot.timeSlot().hour() + hourOffset
                 )
             );
-            this.sessionAllocations.put(hallTimeSlot, new SessionAllocation(
-                courseToSchedule.getStudentsStream(),
-                hallTimeSlot.timeSlot().dayOfWeek(),
-                courseToSchedule.getGroupNumber(),
-                hallTimeSlot.timeSlot().hour(),
-                courseToSchedule,
-                hallTimeSlot.hall(),
-                courseToSchedule.getTeacher()
-            ));
+            this.sessionAllocations.put(hallTimeSlot, new SessionAllocation(hallTimeSlot, courseToSchedule));
             this.teachersAllocations.get(courseToSchedule.getTeacher()).add(hallTimeSlot);
 
             if (courseToSchedule.getGroupNumber() == null) {
@@ -110,7 +109,7 @@ public class Schedule {
         // TODO students
     }
 
-    public void markSlotAsUnallocated (HallTimeSlot slot) {
+    public void markSlotAsUnallocated(HallTimeSlot slot) {
         SessionAllocation allocation = this.sessionAllocations.get(slot);
 
         for (int hourOffset = 0; hourOffset < allocation.course().getSessionLengthHours(); hourOffset++) {
@@ -122,17 +121,18 @@ public class Schedule {
                 )
             );
             this.sessionAllocations.remove(hallTimeSlot);
-            this.teachersAllocations.get(allocation.teacher()).remove(hallTimeSlot);
+            this.teachersAllocations.get(allocation.course().getTeacher()).remove(hallTimeSlot);
 
-            if (allocation.groupNumber() == null) {
-                for (int groupNumber = 1; groupNumber <= allocation.studentsStream().groups(); groupNumber++) {
+            if (allocation.course().getGroupNumber() == null) {
+                int groupsCount = allocation.course().getStudentsStream().groups();
+                for (int groupNumber = 1; groupNumber <= groupsCount; groupNumber++) {
                     this.studentsGroupsAllocations.get(
-                        new StudentsGroup(allocation.studentsStream(), groupNumber)
+                        new StudentsGroup(allocation.course().getStudentsStream(), groupNumber)
                     ).remove(hallTimeSlot);
                 }
             } else {
                 this.studentsGroupsAllocations.get(
-                    new StudentsGroup(allocation.studentsStream(), allocation.groupNumber())
+                    new StudentsGroup(allocation.course().getStudentsStream(), allocation.course().getGroupNumber())
                 ).remove(hallTimeSlot);
             }
         }
