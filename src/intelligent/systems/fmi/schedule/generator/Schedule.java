@@ -1,6 +1,5 @@
 package intelligent.systems.fmi.schedule.generator;
 
-import java.sql.Time;
 import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -21,7 +20,8 @@ public class Schedule {
     public static final int END_HOUR = 21;
 
     private Map<HallTimeSlot, SessionAllocation> sessionAllocations = new HashMap<>();
-    private Map<Teacher, Set<TimeSlot>> teachersTimeSlotAllocations = new HashMap<>();
+    private Map<Teacher, Set<HallTimeSlot>> teachersAllocations = new HashMap<>();
+    private Map<StudentsGroup, Set<HallTimeSlot>> studentsGroupsAllocations = new HashMap<>();
     private Map<Student, Set<TimeSlot>> studentsTimeSlotAllocations = new HashMap<>();
 
     public Schedule() {
@@ -30,12 +30,30 @@ public class Schedule {
 
     // TODO refactor Teacher and Student to have a common parent
 
-    public boolean isTeacherAvailableAt (Teacher teacher, TimeSlot timeSlot) {
-        Set<TimeSlot> teacherTimeSlots = this.teachersTimeSlotAllocations.get(teacher);
+    public boolean isTeacherScheduledAt(Teacher teacher, TimeSlot timeSlot) {
+        Set<HallTimeSlot> teacherTimeSlots = this.teachersAllocations.get(teacher);
         if (teacherTimeSlots == null) {
-            return true;
+            return false;
         }
-        return !teacherTimeSlots.contains(timeSlot);
+        return teacherTimeSlots.stream().anyMatch(hallTimeSlot -> timeSlot.equals(hallTimeSlot.timeSlot()));
+    }
+
+    public boolean areStudentsScheduledAt(StudentsGroup studentsGroup, TimeSlot timeSlot) {
+        Set<HallTimeSlot> studentsGroupTimeSlots = this.studentsGroupsAllocations.get(studentsGroup);
+        if (studentsGroupTimeSlots == null) {
+            return false;
+        }
+        return studentsGroupTimeSlots.stream().anyMatch(hallTimeSlot -> timeSlot.equals(hallTimeSlot.timeSlot()));
+    }
+
+    public boolean areStudentsScheduledAt(StudentsStream studentsStream, TimeSlot timeSlot) {
+        for (int groupNumber = 1; groupNumber <= studentsStream.groups(); groupNumber++) {
+            StudentsGroup studentsGroup = new StudentsGroup(studentsStream, groupNumber);
+            if (this.areStudentsScheduledAt(studentsGroup, timeSlot)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean isStudentAvailableAt (Student student, TimeSlot timeSlot) {
@@ -46,28 +64,160 @@ public class Schedule {
         return !studentTimeSlots.contains(timeSlot);
     }
 
-    public boolean isHallTimeSlotAvailable(HallTimeSlot slot) {
-        return !this.sessionAllocations.containsKey(slot);
+    public boolean isHallTimeSlotScheduled(HallTimeSlot slot) {
+        return this.sessionAllocations.containsKey(slot);
     }
 
     public void markSlotAsAllocated (MandatoryCourse courseToSchedule, HallTimeSlot slot) {
-        this.sessionAllocations.put(slot, new SessionAllocation(
-            courseToSchedule.getStudentsStream(),
-            slot.timeSlot().dayOfWeek(),
-            courseToSchedule.getGroupNumber(),
-            slot.timeSlot().hour(),
-            courseToSchedule,
-            slot.hall(),
-            courseToSchedule.getTeacher()
-        ));
-        this.teachersTimeSlotAllocations.putIfAbsent(courseToSchedule.getTeacher(), new HashSet<>());
-        this.teachersTimeSlotAllocations.get(courseToSchedule.getTeacher()).add(slot.timeSlot());
+        // TODO simplify sessionAllocation
+        this.teachersAllocations.putIfAbsent(courseToSchedule.getTeacher(), new HashSet<>());
+
+        for (int hourOffset = 0; hourOffset < courseToSchedule.getSessionLengthHours(); hourOffset++) {
+            HallTimeSlot hallTimeSlot = new HallTimeSlot(
+                slot.hall(),
+                new TimeSlot(
+                    slot.timeSlot().dayOfWeek(),
+                    slot.timeSlot().hour() + hourOffset
+                )
+            );
+            this.sessionAllocations.put(hallTimeSlot, new SessionAllocation(
+                courseToSchedule.getStudentsStream(),
+                hallTimeSlot.timeSlot().dayOfWeek(),
+                courseToSchedule.getGroupNumber(),
+                hallTimeSlot.timeSlot().hour(),
+                courseToSchedule,
+                hallTimeSlot.hall(),
+                courseToSchedule.getTeacher()
+            ));
+            this.teachersAllocations.get(courseToSchedule.getTeacher()).add(hallTimeSlot);
+
+            if (courseToSchedule.getGroupNumber() == null) {
+                for (int groupNumber = 1; groupNumber <= courseToSchedule.getStudentsStream().groups(); groupNumber++) {
+                    StudentsGroup studentsGroup = new StudentsGroup(courseToSchedule.getStudentsStream(), groupNumber);
+                    this.studentsGroupsAllocations.putIfAbsent(studentsGroup, new HashSet<>());
+                    this.studentsGroupsAllocations.get(studentsGroup).add(hallTimeSlot);
+                }
+            } else {
+                StudentsGroup studentsGroup = new StudentsGroup(
+                    courseToSchedule.getStudentsStream(),
+                    courseToSchedule.getGroupNumber()
+                );
+                this.studentsGroupsAllocations.putIfAbsent(studentsGroup, new HashSet<>());
+                this.studentsGroupsAllocations.get(studentsGroup).add(hallTimeSlot);
+            }
+        }
+
         // TODO students
     }
 
     public void markSlotAsUnallocated (HallTimeSlot slot) {
-        SessionAllocation allocation = this.sessionAllocations.remove(slot);
-        this.teachersTimeSlotAllocations.get(allocation.teacher()).remove(slot.timeSlot());
+        SessionAllocation allocation = this.sessionAllocations.get(slot);
+
+        for (int hourOffset = 0; hourOffset < allocation.course().getSessionLengthHours(); hourOffset++) {
+            HallTimeSlot hallTimeSlot = new HallTimeSlot(
+                slot.hall(),
+                new TimeSlot(
+                    slot.timeSlot().dayOfWeek(),
+                    slot.timeSlot().hour() + hourOffset
+                )
+            );
+            this.sessionAllocations.remove(hallTimeSlot);
+            this.teachersAllocations.get(allocation.teacher()).remove(hallTimeSlot);
+
+            if (allocation.groupNumber() == null) {
+                for (int groupNumber = 1; groupNumber <= allocation.studentsStream().groups(); groupNumber++) {
+                    this.studentsGroupsAllocations.get(
+                        new StudentsGroup(allocation.studentsStream(), groupNumber)
+                    ).remove(hallTimeSlot);
+                }
+            } else {
+                this.studentsGroupsAllocations.get(
+                    new StudentsGroup(allocation.studentsStream(), allocation.groupNumber())
+                ).remove(hallTimeSlot);
+            }
+        }
+
         // TODO students
     }
+
+    public void printHallSchedule(Hall hall) {
+        for (DayOfWeek dayOfWeek : Schedule.SCHEDULED_DAYS_OF_WEEK) {
+            System.out.println(dayOfWeek + ":");
+
+            for (int hour = Schedule.START_HOUR; hour < Schedule.END_HOUR; hour++) {
+                TimeSlot timeSlot = new TimeSlot(dayOfWeek, hour);
+                HallTimeSlot hallTimeSlot = new HallTimeSlot(hall, timeSlot);
+                SessionAllocation allocation = this.sessionAllocations.get(hallTimeSlot);
+
+                if (allocation == null) {
+                    System.out.println(hour + ": -");
+                } else {
+                    System.out.println(hour + ": " + allocation);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void printStudentsStreamSchedule(StudentsGroup studentsGroup) {
+        System.out.println("Schedule for " + studentsGroup);
+
+        Set<HallTimeSlot> studentsGroupAllocations = this.studentsGroupsAllocations.get(studentsGroup);
+        Map<TimeSlot, Hall> allocationHalls = new HashMap<>();
+
+        for (HallTimeSlot slot : studentsGroupAllocations) {
+            allocationHalls.put(slot.timeSlot(), slot.hall());
+        }
+
+        for (DayOfWeek dayOfWeek : Schedule.SCHEDULED_DAYS_OF_WEEK) {
+            System.out.println(dayOfWeek + ":");
+
+            for (int hour = Schedule.START_HOUR; hour < Schedule.END_HOUR; hour++) {
+                TimeSlot timeSlot = new TimeSlot(dayOfWeek, hour);
+                Hall hall = allocationHalls.get(timeSlot);
+
+                if (hall == null) {
+                    System.out.println(hour + ": -");
+                } else {
+                    SessionAllocation allocation = this.sessionAllocations.get(new HallTimeSlot(hall, timeSlot));
+                    System.out.println(hour + ": " + allocation);
+                }
+            }
+
+            System.out.println();
+        }
+    }
+
+    public void printTeacherSchedule(Teacher teacher) {
+        System.out.println("Schedule of " + teacher.name());
+
+        Set<HallTimeSlot> teacherAllocations = this.teachersAllocations.get(teacher);
+        Map<TimeSlot, Hall> allocationHalls = new HashMap<>();
+
+        for (HallTimeSlot slot : teacherAllocations) {
+            allocationHalls.put(slot.timeSlot(), slot.hall());
+        }
+
+        for (DayOfWeek dayOfWeek : Schedule.SCHEDULED_DAYS_OF_WEEK) {
+            System.out.println(dayOfWeek + ":");
+
+            for (int hour = Schedule.START_HOUR; hour < Schedule.END_HOUR; hour++) {
+                TimeSlot timeSlot = new TimeSlot(dayOfWeek, hour);
+                Hall hall = allocationHalls.get(timeSlot);
+
+                if (hall == null) {
+                    System.out.println(hour + ": -");
+                } else {
+                    SessionAllocation allocation = this.sessionAllocations.get(new HallTimeSlot(hall, timeSlot));
+                    System.out.println(hour + ": " + allocation);
+                }
+            }
+
+            System.out.println();
+        }
+
+        System.out.println();
+    }
+
+    // TODO printStudentSchedule
 }

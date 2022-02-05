@@ -23,6 +23,7 @@ public class ScheduleGenerator {
     final private Set<MandatoryCourse> mandatoryCourses;
     final private Set<ElectiveCourse> electiveCourses;
     final private Schedule schedule = new Schedule();
+    private int count = 0;
 
     private static List<String> readCSVFileLines(String filePath) {
         List<String> lines = new ArrayList<>();
@@ -125,6 +126,10 @@ public class ScheduleGenerator {
 
         Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
         availableStartTimeSlots.removeIf(slot -> slot.hall().availableSeats() < attendingStudentsCount);
+
+        if (availableStartTimeSlots.size() == 0) {
+            System.out.println("all removed");
+        }
     }
 
     private void enforceComputerLabRequirement (MandatoryCourse courseToSchedule) {
@@ -135,22 +140,7 @@ public class ScheduleGenerator {
     }
 
     // TODO arc consistency must be applied for all enforce functions that take schedule
-    private Set<HallTimeSlot> enforceTeacherAvailability (MandatoryCourse courseToSchedule) {
-        Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
-        Set<HallTimeSlot> removedStartTimeSlots = new HashSet<>();
-
-        for (Iterator<HallTimeSlot> it = availableStartTimeSlots.iterator(); it.hasNext();) {
-            HallTimeSlot startTimeSlot = it.next();
-
-            if (!this.schedule.isTeacherAvailableAt(courseToSchedule.getTeacher(), startTimeSlot.timeSlot())) {
-                removedStartTimeSlots.add(startTimeSlot);
-                it.remove();
-            }
-        }
-        return removedStartTimeSlots;
-    }
-
-    private Set<HallTimeSlot> enforceSessionLengthRequirement (MandatoryCourse courseToSchedule) {
+    private Set<HallTimeSlot> enforceNonOverlappingScheduleRequirement(MandatoryCourse courseToSchedule) {
         Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
         Set<HallTimeSlot> removedStartTimeSlots = new HashSet<>();
 
@@ -173,10 +163,32 @@ public class ScheduleGenerator {
                 .toList();
 
             for (HallTimeSlot sessionSlot : sessionSlots) {
-                if (!this.schedule.isHallTimeSlotAvailable(sessionSlot)) {
+                // TODO refactor this! very bad code repetition
+                if (
+                    this.schedule.isHallTimeSlotScheduled(sessionSlot) ||
+                    this.schedule.isTeacherScheduledAt(courseToSchedule.getTeacher(), sessionSlot.timeSlot())
+                ) {
                     removedStartTimeSlots.add(startTimeSlot);
                     it.remove();
                     break;
+                }
+
+                if (courseToSchedule.getGroupNumber() == null) {
+                    if (this.schedule.areStudentsScheduledAt(courseToSchedule.getStudentsStream(), sessionSlot.timeSlot())) {
+                        removedStartTimeSlots.add(startTimeSlot);
+                        it.remove();
+                        break;
+                    }
+                } else {
+                    StudentsGroup studentsGroup = new StudentsGroup(
+                        courseToSchedule.getStudentsStream(),
+                        courseToSchedule.getGroupNumber()
+                    );
+                    if (this.schedule.areStudentsScheduledAt(studentsGroup, sessionSlot.timeSlot())) {
+                        removedStartTimeSlots.add(startTimeSlot);
+                        it.remove();
+                        break;
+                    }
                 }
             }
         }
@@ -198,35 +210,31 @@ public class ScheduleGenerator {
             .orElseThrow();
     }
 
-    private void backtrack(Set<MandatoryCourse> coursesToSchedule, MandatoryCourse courseToUnschedule) {
-        coursesToSchedule.add(courseToUnschedule);
-        //this.schedule.markSlotAsUnallocated();
-        //courseToUnschedule.getAvailableStartTimeSlots().add(slot);
-    }
+    private boolean searchForSolution(Set<MandatoryCourse> coursesToSchedule, int depth) {
+        this.count++;
+        System.out.println("depth: " + depth + ", count: " + this.count);
 
-    private boolean searchForSolution(Set<MandatoryCourse> coursesToSchedule) {
-        while(!coursesToSchedule.isEmpty()) {
-            MandatoryCourse courseToSchedule = this.getMinimumAvailableSlotsCourse(coursesToSchedule);
-            coursesToSchedule.remove(courseToSchedule);
-            Set<HallTimeSlot> removedStartTimeSlots = this.enforceSessionLengthRequirement(courseToSchedule);
-            removedStartTimeSlots.addAll(this.enforceTeacherAvailability(courseToSchedule));
-
-            Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
-            if (availableStartTimeSlots.isEmpty()) {
-                courseToSchedule.getAvailableStartTimeSlots().addAll(removedStartTimeSlots);
-                coursesToSchedule.add(courseToSchedule);
-                return false;
-            }
-
-            for (HallTimeSlot slot : availableStartTimeSlots) {
-                this.schedule.markSlotAsAllocated(courseToSchedule, slot);
-                if (searchForSolution(coursesToSchedule)) {
-                    return true;
-                }
-                this.schedule.markSlotAsUnallocated(slot);
-            }
+        if (coursesToSchedule.isEmpty()) {
+            return true;
         }
-        return true;
+
+        MandatoryCourse courseToSchedule = this.getMinimumAvailableSlotsCourse(coursesToSchedule);
+        coursesToSchedule.remove(courseToSchedule);
+        Set<HallTimeSlot> removedStartTimeSlots = this.enforceNonOverlappingScheduleRequirement(courseToSchedule);
+        Set<HallTimeSlot> availableStartTimeSlots = courseToSchedule.getAvailableStartTimeSlots();
+
+        for (HallTimeSlot slot : availableStartTimeSlots) {
+            this.schedule.markSlotAsAllocated(courseToSchedule, slot);
+            if (searchForSolution(coursesToSchedule, depth + 1)) {
+                return true;
+            }
+            this.schedule.markSlotAsUnallocated(slot);
+        }
+
+        courseToSchedule.getAvailableStartTimeSlots().addAll(removedStartTimeSlots);
+        coursesToSchedule.add(courseToSchedule);
+
+        return false;
     }
 
     public Schedule generate() {
@@ -235,7 +243,7 @@ public class ScheduleGenerator {
             this.enforceHallMaxCapacity(course);
             this.enforceComputerLabRequirement(course);
         }
-        if (!this.searchForSolution(coursesToSchedule)) {
+        if (!this.searchForSolution(coursesToSchedule, 0)) {
             // NO SOLUTION
             return null;
         }
@@ -266,5 +274,14 @@ public class ScheduleGenerator {
             electiveCourses
         );
         Schedule schedule = generator.generate();
+
+        StudentsStream ss = new StudentsStream("Software Engineering", 1, 6);
+
+        for (int groupNumber = 1; groupNumber <= ss.groups(); groupNumber++) {
+            schedule.printStudentsStreamSchedule(new StudentsGroup(ss, groupNumber));
+            System.out.println("------------------------");
+        }
+
+        System.out.println("Finished");
     }
 }
