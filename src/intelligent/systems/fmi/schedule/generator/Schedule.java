@@ -3,7 +3,7 @@ package intelligent.systems.fmi.schedule.generator;
 import intelligent.systems.fmi.schedule.generator.allocation.HallTimeSlot;
 import intelligent.systems.fmi.schedule.generator.allocation.SessionAllocation;
 import intelligent.systems.fmi.schedule.generator.allocation.TimeSlot;
-import intelligent.systems.fmi.schedule.generator.courses.MandatoryCourse;
+import intelligent.systems.fmi.schedule.generator.courses.CompulsoryCourse;
 import intelligent.systems.fmi.schedule.generator.halls.Hall;
 import intelligent.systems.fmi.schedule.generator.students.Student;
 import intelligent.systems.fmi.schedule.generator.students.StudentsGroup;
@@ -21,10 +21,7 @@ public class Schedule {
     public static final List<DayOfWeek> SCHEDULED_DAYS_OF_WEEK = List.of(
         DayOfWeek.MONDAY,
         DayOfWeek.TUESDAY,
-        DayOfWeek.WEDNESDAY,
-        DayOfWeek.THURSDAY,
-        DayOfWeek.FRIDAY,
-        DayOfWeek.SATURDAY
+        DayOfWeek.WEDNESDAY
     );
     public static final int START_HOUR = 8;
     public static final int END_HOUR = 21;
@@ -76,7 +73,7 @@ public class Schedule {
         return this.sessionAllocations.containsKey(slot);
     }
 
-    public void markSlotAsAllocated(MandatoryCourse courseToSchedule, HallTimeSlot slot) {
+    public void markSlotAsAllocated(CompulsoryCourse courseToSchedule, HallTimeSlot slot) {
         this.teachersAllocations.putIfAbsent(courseToSchedule.getTeacher(), new HashSet<>());
 
         for (int hourOffset = 0; hourOffset < courseToSchedule.getSessionLengthHours(); hourOffset++) {
@@ -141,6 +138,7 @@ public class Schedule {
     }
 
     public void printHallSchedule(Hall hall) {
+        System.out.println("Schedule for hall " + hall);
         for (DayOfWeek dayOfWeek : Schedule.SCHEDULED_DAYS_OF_WEEK) {
             System.out.println(dayOfWeek + ":");
 
@@ -157,6 +155,7 @@ public class Schedule {
             }
             System.out.println();
         }
+        System.out.println("------------------------");
     }
 
     public void printStudentsStreamSchedule(StudentsGroup studentsGroup) {

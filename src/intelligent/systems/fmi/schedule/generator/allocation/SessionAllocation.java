@@ -1,8 +1,8 @@
 package intelligent.systems.fmi.schedule.generator.allocation;
 
-import intelligent.systems.fmi.schedule.generator.courses.MandatoryCourse;
+import intelligent.systems.fmi.schedule.generator.courses.CompulsoryCourse;
 
-public record SessionAllocation(HallTimeSlot slot, MandatoryCourse course) {
+public record SessionAllocation(HallTimeSlot slot, CompulsoryCourse course) {
     @Override
     public String toString() {
         String[] parts = {

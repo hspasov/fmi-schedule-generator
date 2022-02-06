@@ -6,11 +6,11 @@ import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
 import java.util.Map;
 import java.util.Objects;
 
-public class MandatoryCourse extends Course {
+public class CompulsoryCourse extends Course {
     private final StudentsStream studentsStream;
     private final Integer groupNumber;
 
-    public static MandatoryCourse fromString(
+    public static CompulsoryCourse fromString(
         String input,
         Map<String, Teacher> teachers,
         Map<String, StudentsStream> studentsStreams
@@ -50,7 +50,7 @@ public class MandatoryCourse extends Course {
             default -> throw new IllegalArgumentException("Invalid flag `areComputersRequired`");
         };
 
-        return new MandatoryCourse(
+        return new CompulsoryCourse(
             studentsStream,
             inputParts[groupNumberIdx].length() == 0 ? null : Integer.parseInt(inputParts[groupNumberIdx]),
             SessionType.valueOf(inputParts[sessionTypeIdx]),
@@ -61,7 +61,7 @@ public class MandatoryCourse extends Course {
         );
     }
 
-    public MandatoryCourse(
+    public CompulsoryCourse(
         StudentsStream studentsStream,
         Integer groupNumber,
         SessionType sessionType,
@@ -87,7 +87,7 @@ public class MandatoryCourse extends Course {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MandatoryCourse that = (MandatoryCourse) o;
+        CompulsoryCourse that = (CompulsoryCourse) o;
         return studentsStream.equals(that.studentsStream) && Objects.equals(groupNumber, that.groupNumber) &&
             getSessionType() == that.getSessionType() && getName().equals(that.getName()) && getTeacher().equals(
             that.getTeacher());

@@ -1,7 +1,7 @@
 package intelligent.systems.fmi.schedule.generator;
 
 import intelligent.systems.fmi.schedule.generator.courses.ElectiveCourse;
-import intelligent.systems.fmi.schedule.generator.courses.MandatoryCourse;
+import intelligent.systems.fmi.schedule.generator.courses.CompulsoryCourse;
 import intelligent.systems.fmi.schedule.generator.halls.Hall;
 import intelligent.systems.fmi.schedule.generator.students.Student;
 import intelligent.systems.fmi.schedule.generator.students.StudentsStream;
@@ -60,13 +60,13 @@ public class ScheduleGeneratorInputReader {
             .collect(Collectors.toSet());
     }
 
-    public static Set<MandatoryCourse> readMandatoryCoursesFile(
+    public static Set<CompulsoryCourse> readMandatoryCoursesFile(
         String mandatoryCoursesFilePath,
         Map<String, Teacher> teachers,
         Map<String, StudentsStream> studentsStreams
     ) {
         return readCSVFileLines(mandatoryCoursesFilePath).stream()
-            .map(line -> MandatoryCourse.fromString(line, teachers, studentsStreams))
+            .map(line -> CompulsoryCourse.fromString(line, teachers, studentsStreams))
             .collect(Collectors.toSet());
     }
 

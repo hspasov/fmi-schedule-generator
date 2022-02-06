@@ -1,11 +1,11 @@
 package intelligent.systems.fmi.schedule.generator.allocation;
 
-import intelligent.systems.fmi.schedule.generator.courses.MandatoryCourse;
+import intelligent.systems.fmi.schedule.generator.courses.CompulsoryCourse;
 
 import java.util.Objects;
-import java.util.Set;
+import java.util.TreeSet;
 
-public record CourseAllocationCandidate(MandatoryCourse course, Set<HallTimeSlot> availableStartTimeSlots) {
+public record CourseAllocationCandidate(CompulsoryCourse course, TreeSet<HallTimeSlot> availableStartTimeSlots) {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

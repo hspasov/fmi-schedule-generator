@@ -2,7 +2,8 @@ package intelligent.systems.fmi.schedule.generator.halls;
 
 import java.util.Objects;
 
-public record Hall(String faculty, String roomNumber, int availableSeats, boolean isComputerLab) {
+public record Hall(String faculty, String roomNumber, int availableSeats, boolean isComputerLab)
+    implements Comparable<Hall> {
     public static Hall fromString(String input) {
         final int expectedParts = 4;
         final int facultyIdx = 0;
@@ -45,5 +46,14 @@ public record Hall(String faculty, String roomNumber, int availableSeats, boolea
     @Override
     public int hashCode() {
         return Objects.hash(faculty, roomNumber);
+    }
+
+    @Override
+    public int compareTo(Hall o) {
+        int result = this.faculty.compareTo(o.faculty);
+        if (result != 0) {
+            return result;
+        }
+        return this.roomNumber.compareTo(o.roomNumber);
     }
 }

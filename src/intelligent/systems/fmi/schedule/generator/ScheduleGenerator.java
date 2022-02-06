@@ -4,7 +4,7 @@ import intelligent.systems.fmi.schedule.generator.allocation.CourseAllocationCan
 import intelligent.systems.fmi.schedule.generator.allocation.HallTimeSlot;
 import intelligent.systems.fmi.schedule.generator.allocation.TimeSlot;
 import intelligent.systems.fmi.schedule.generator.courses.ElectiveCourse;
-import intelligent.systems.fmi.schedule.generator.courses.MandatoryCourse;
+import intelligent.systems.fmi.schedule.generator.courses.CompulsoryCourse;
 import intelligent.systems.fmi.schedule.generator.halls.Hall;
 import intelligent.systems.fmi.schedule.generator.students.Student;
 import intelligent.systems.fmi.schedule.generator.students.StudentsGroup;
@@ -13,11 +13,15 @@ import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
 
 import java.time.DayOfWeek;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static intelligent.systems.fmi.schedule.generator.ScheduleGeneratorInputReader.readElectiveCoursesFile;
@@ -32,7 +36,7 @@ public class ScheduleGenerator {
     final private Set<Hall> halls;
     final private Map<String, Teacher> teachers;
     final private Set<Student> students;
-    final private Set<MandatoryCourse> mandatoryCourses;
+    final private Set<CompulsoryCourse> compulsoryCourses;
     final private Set<ElectiveCourse> electiveCourses;
     final private Set<CourseAllocationCandidate> allocationCandidates;
     final private Schedule schedule = new Schedule();
@@ -43,14 +47,14 @@ public class ScheduleGenerator {
         Set<Hall> halls,
         Map<String, Teacher> teachers,
         Set<Student> students,
-        Set<MandatoryCourse> mandatoryCourses,
+        Set<CompulsoryCourse> compulsoryCourses,
         Set<ElectiveCourse> electiveCourses
     ) {
         this.studentsStreams = studentsStreams;
         this.halls = halls;
         this.teachers = teachers;
         this.students = students;
-        this.mandatoryCourses = mandatoryCourses;
+        this.compulsoryCourses = compulsoryCourses;
         this.electiveCourses = electiveCourses;
 
         this.allocationCandidates = new HashSet<>();
@@ -64,8 +68,8 @@ public class ScheduleGenerator {
             }
         }
 
-        for (MandatoryCourse course : this.mandatoryCourses) {
-            this.allocationCandidates.add(new CourseAllocationCandidate(course, new HashSet<>(slots)));
+        for (CompulsoryCourse course : this.compulsoryCourses) {
+            this.allocationCandidates.add(new CourseAllocationCandidate(course, new TreeSet<>(slots)));
         }
     }
 
@@ -143,38 +147,109 @@ public class ScheduleGenerator {
         return removedStartTimeSlots;
     }
 
-    private void enforceConstraints(Set<MandatoryCourse> coursesToSchedule, Schedule schedule) {
+    private void enforceConstraints(Set<CompulsoryCourse> coursesToSchedule, Schedule schedule) {
         // TODO ElectiveCourses
     }
 
-    private CourseAllocationCandidate getMinimumAvailableSlotsCandidate() {
+    private List<CourseAllocationCandidate> getCandidatesSortedByMinAvailableSlots() {
         return this.allocationCandidates.stream()
-            .min(Comparator.comparingInt(candidate -> candidate.availableStartTimeSlots().size()))
-            .orElseThrow();
+            .sorted(Comparator.comparingInt(candidate -> candidate.availableStartTimeSlots().size()))
+            .toList();
+    }
+
+    public Map<CourseAllocationCandidate, Set<HallTimeSlot>> forwardCheck(CompulsoryCourse scheduledCourse,
+                                                                          HallTimeSlot slot) {
+        Map<CourseAllocationCandidate, Set<HallTimeSlot>> candidatesWithRemovedSlots = new HashMap<>();
+        for (CourseAllocationCandidate candidate : this.allocationCandidates) {
+            for (int hourOffset = 0; hourOffset < scheduledCourse.getSessionLengthHours(); hourOffset++) {
+                HallTimeSlot hallTimeSlot = new HallTimeSlot(
+                    slot.hall(),
+                    new TimeSlot(
+                        slot.timeSlot().dayOfWeek(),
+                        slot.timeSlot().hour() + hourOffset
+                    )
+                );
+                if (candidate.availableStartTimeSlots().remove(hallTimeSlot)) {
+                    candidatesWithRemovedSlots.putIfAbsent(candidate, new HashSet<>());
+                    candidatesWithRemovedSlots.get(candidate).add(hallTimeSlot);
+                }
+                if (
+                    candidate.course().getTeacher().equals(scheduledCourse.getTeacher()) ||
+                        (
+                            candidate.course().getStudentsStream().equals(scheduledCourse.getStudentsStream()) &&
+                                (
+                                    candidate.course().getGroupNumber() == null ||
+                                        scheduledCourse.getGroupNumber() == null
+                                )
+                        ) ||
+                        (
+                            candidate.course().getGroupNumber() != null &&
+                                scheduledCourse.getGroupNumber() != null &&
+                                candidate.course().getStudentsStream().equals(scheduledCourse.getStudentsStream()) &&
+                                candidate.course().getGroupNumber().equals(scheduledCourse.getGroupNumber())
+                        )
+                ) {
+                    Set<HallTimeSlot> removedSlots = candidate.availableStartTimeSlots().stream()
+                        .filter(s -> s.timeSlot().equals(hallTimeSlot.timeSlot()))
+                        .collect(Collectors.toSet());
+                    candidate.availableStartTimeSlots().removeAll(removedSlots);
+                    candidatesWithRemovedSlots.putIfAbsent(candidate, new HashSet<>());
+                    candidatesWithRemovedSlots.get(candidate).addAll(removedSlots);
+                }
+            }
+        }
+        return candidatesWithRemovedSlots;
+    }
+
+    public void undoForwardCheck(Map<CourseAllocationCandidate, Set<HallTimeSlot>> candidatesWithRemovedSlots) {
+        for (var entry : candidatesWithRemovedSlots.entrySet()) {
+            CourseAllocationCandidate candidate = entry.getKey();
+            Set<HallTimeSlot> removedSlots = entry.getValue();
+            candidate.availableStartTimeSlots().addAll(removedSlots);
+        }
     }
 
     private boolean searchForSolution(int depth) {
-        this.count++;
-        System.out.println("depth: " + depth + ", count: " + this.count);
-
         if (this.allocationCandidates.isEmpty()) {
             return true;
         }
 
-        CourseAllocationCandidate courseToSchedule = this.getMinimumAvailableSlotsCandidate();
-        this.allocationCandidates.remove(courseToSchedule);
-        Set<HallTimeSlot> removedStartTimeSlots = this.enforceNonOverlappingScheduleRequirement(courseToSchedule);
+        List<CourseAllocationCandidate> coursesToSchedule = this.getCandidatesSortedByMinAvailableSlots();
 
-        for (HallTimeSlot slot : courseToSchedule.availableStartTimeSlots()) {
-            this.schedule.markSlotAsAllocated(courseToSchedule.course(), slot);
-            if (searchForSolution(depth + 1)) {
-                return true;
+        int candidateId = 0;
+
+        for (CourseAllocationCandidate candidate : coursesToSchedule) {
+            candidateId++;
+            this.allocationCandidates.remove(candidate);
+
+            Set<HallTimeSlot> removedStartTimeSlots = this.enforceNonOverlappingScheduleRequirement(candidate);
+
+            int slotId = 0;
+
+            for (HallTimeSlot slot : candidate.availableStartTimeSlots()) {
+                this.count++;
+                slotId++;
+                System.out.println(
+                    "Allocating " + depth + "/" + this.compulsoryCourses.size() +
+                        ", candidate " + candidateId + "/" + coursesToSchedule.size() +
+                        ", slot " + slotId + "/" + candidate.availableStartTimeSlots().size() +
+                        ", steps taken: " + this.count
+                );
+
+                this.schedule.markSlotAsAllocated(candidate.course(), slot);
+                var candidatesWithRemovedSlots = forwardCheck(candidate.course(), slot);
+
+                if (searchForSolution(depth + 1)) {
+                    return true;
+                }
+
+                undoForwardCheck(candidatesWithRemovedSlots);
+                this.schedule.markSlotAsUnallocated(slot);
             }
-            this.schedule.markSlotAsUnallocated(slot);
-        }
 
-        courseToSchedule.availableStartTimeSlots().addAll(removedStartTimeSlots);
-        this.allocationCandidates.add(courseToSchedule);
+            candidate.availableStartTimeSlots().addAll(removedStartTimeSlots);
+            this.allocationCandidates.add(candidate);
+        }
 
         return false;
     }
@@ -203,7 +278,7 @@ public class ScheduleGenerator {
         Set<Hall> halls = readHallsFile(args[hallsArgIdx]);
         Map<String, Teacher> teachers = readTeachersFile(args[teachersArgIdx]);
         Set<Student> students = readStudentsFile(args[studentsArgIdx], studentsStreams);
-        Set<MandatoryCourse> mandatoryCourses = readMandatoryCoursesFile(
+        Set<CompulsoryCourse> compulsoryCourses = readMandatoryCoursesFile(
             args[mandatoryCoursesArgIdx],
             teachers,
             studentsStreams
@@ -215,7 +290,7 @@ public class ScheduleGenerator {
             halls,
             teachers,
             students,
-            mandatoryCourses,
+            compulsoryCourses,
             electiveCourses
         );
         Schedule schedule = generator.generate();
@@ -226,6 +301,8 @@ public class ScheduleGenerator {
             schedule.printStudentsStreamSchedule(new StudentsGroup(ss, groupNumber));
             System.out.println("------------------------");
         }
+
+        schedule.printHallSchedule(new Hall("FMI", "311", 120, false));
 
         System.out.println("Finished");
     }
