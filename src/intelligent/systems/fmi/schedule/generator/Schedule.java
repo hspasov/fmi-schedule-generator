@@ -9,6 +9,7 @@ import intelligent.systems.fmi.schedule.generator.students.Student;
 import intelligent.systems.fmi.schedule.generator.students.StudentsGroup;
 import intelligent.systems.fmi.schedule.generator.students.StudentsStream;
 import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
+import org.apache.poi.hssf.record.formula.functions.Day;
 
 import java.time.DayOfWeek;
 import java.util.HashMap;
@@ -21,7 +22,10 @@ public class Schedule {
     public static final List<DayOfWeek> SCHEDULED_DAYS_OF_WEEK = List.of(
         DayOfWeek.MONDAY,
         DayOfWeek.TUESDAY,
-        DayOfWeek.WEDNESDAY
+        DayOfWeek.WEDNESDAY,
+        DayOfWeek.THURSDAY,
+        DayOfWeek.FRIDAY,
+        DayOfWeek.SATURDAY
     );
     public static final int START_HOUR = 8;
     public static final int END_HOUR = 21;
@@ -102,8 +106,6 @@ public class Schedule {
                 this.studentsGroupsAllocations.get(studentsGroup).add(hallTimeSlot);
             }
         }
-
-        // TODO students
     }
 
     public void markSlotAsUnallocated(HallTimeSlot slot) {
@@ -133,8 +135,6 @@ public class Schedule {
                 ).remove(hallTimeSlot);
             }
         }
-
-        // TODO students
     }
 
     public void printHallSchedule(Hall hall) {
@@ -218,5 +218,15 @@ public class Schedule {
         System.out.println();
     }
 
-    // TODO printStudentSchedule
+    public Map<HallTimeSlot, SessionAllocation> getSessionAllocations() {
+        return sessionAllocations;
+    }
+
+    public Map<Teacher, Set<HallTimeSlot>> getTeachersAllocations() {
+        return teachersAllocations;
+    }
+
+    public Map<StudentsGroup, Set<HallTimeSlot>> getStudentsGroupsAllocations() {
+        return studentsGroupsAllocations;
+    }
 }

@@ -10,6 +10,8 @@ import intelligent.systems.fmi.schedule.generator.students.Student;
 import intelligent.systems.fmi.schedule.generator.students.StudentsGroup;
 import intelligent.systems.fmi.schedule.generator.students.StudentsStream;
 import intelligent.systems.fmi.schedule.generator.teachers.Teacher;
+import org.apache.poi.hssf.model.Workbook;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 import java.time.DayOfWeek;
 import java.util.Comparator;
@@ -92,7 +94,6 @@ public class ScheduleGenerator {
         );
     }
 
-    // TODO arc consistency must be applied for all enforce functions that take schedule
     private Set<HallTimeSlot> enforceNonOverlappingScheduleRequirement(CourseAllocationCandidate candidate) {
         Set<HallTimeSlot> availableStartTimeSlots = candidate.availableStartTimeSlots();
         Set<HallTimeSlot> removedStartTimeSlots = new HashSet<>();
@@ -295,14 +296,27 @@ public class ScheduleGenerator {
         );
         Schedule schedule = generator.generate();
 
-        StudentsStream ss = new StudentsStream("Software Engineering", 1, 6);
-
-        for (int groupNumber = 1; groupNumber <= ss.groups(); groupNumber++) {
-            schedule.printStudentsStreamSchedule(new StudentsGroup(ss, groupNumber));
-            System.out.println("------------------------");
+        for (StudentsStream ss : studentsStreams.values()) {
+            ScheduleOutputWriter writer = new ScheduleOutputWriter(schedule);
+            writer.writeStudentsStreamSchedule(ss);
         }
 
-        schedule.printHallSchedule(new Hall("FMI", "311", 120, false));
+        for (Hall hall : halls) {
+            ScheduleOutputWriter writer = new ScheduleOutputWriter(schedule);
+            writer.writeHallSchedule(hall);
+        }
+
+        for (Teacher teacher : teachers.values()) {
+            ScheduleOutputWriter writer = new ScheduleOutputWriter(schedule);
+            writer.writeTeacherSchedule(teacher);
+        }
+
+//        for (int groupNumber = 1; groupNumber <= ss.groups(); groupNumber++) {
+//            schedule.printStudentsStreamSchedule(new StudentsGroup(ss, groupNumber));
+//            System.out.println("------------------------");
+//        }
+//
+//        schedule.printHallSchedule(new Hall("FMI", "311", 120, false));
 
         System.out.println("Finished");
     }
